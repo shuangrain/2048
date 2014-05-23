@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace _2048_Game
 {
@@ -64,7 +65,8 @@ namespace _2048_Game
             }
             LocationChangeNum();
             lblPoint.Text = "Score：" + getPoint;
-            if (checkmove != 0)
+            //若數字無移動與數字無相加就不進行動作
+            if (checkmove != 0 || checkadd!=0)
             {
                 rand();
                 checkmove = 0;
@@ -82,6 +84,14 @@ namespace _2048_Game
             //在隨機位置產生兩個隨機的數字
             rand();
             rand();
+            //尋找最佳成績
+            //StreamWriter Write = new StreamWriter(@"/1.txt");
+            //Write.WriteLine("");
+            //Write.WriteLine("Best Score：159159");
+            //Write.WriteLine("");
+            //Write.Close();
+            //StreamReader Read = new StreamReader(@"/1.txt", Encoding.UTF8);
+            //Read.Close();
         }
         public void Add_Up()
         {

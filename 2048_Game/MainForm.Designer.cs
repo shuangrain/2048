@@ -48,12 +48,13 @@
             this.a2 = new System.Windows.Forms.Button();
             this.a1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.lblPoint = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tSSLTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tSSLPlayTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblPoint = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblBestScore = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -262,6 +263,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblBestScore);
             this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.lblPoint);
             this.groupBox1.Location = new System.Drawing.Point(18, 3);
@@ -270,6 +272,26 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "功能區";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(288, 45);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 1;
+            this.btnReset.Text = "重新遊戲";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // lblPoint
+            // 
+            this.lblPoint.AutoSize = true;
+            this.lblPoint.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblPoint.Location = new System.Drawing.Point(7, 22);
+            this.lblPoint.Name = "lblPoint";
+            this.lblPoint.Size = new System.Drawing.Size(80, 20);
+            this.lblPoint.TabIndex = 0;
+            this.lblPoint.Text = "Score：0 ";
             // 
             // statusStrip1
             // 
@@ -289,12 +311,6 @@
             this.tSSLTime.Spring = true;
             this.tSSLTime.Text = "tSSLTime";
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // tSSLPlayTime
             // 
             this.tSSLPlayTime.Name = "tSSLPlayTime";
@@ -302,25 +318,21 @@
             this.tSSLPlayTime.Spring = true;
             this.tSSLPlayTime.Text = "tSSLPlayTime";
             // 
-            // lblPoint
+            // timer1
             // 
-            this.lblPoint.AutoSize = true;
-            this.lblPoint.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblPoint.Location = new System.Drawing.Point(7, 22);
-            this.lblPoint.Name = "lblPoint";
-            this.lblPoint.Size = new System.Drawing.Size(80, 20);
-            this.lblPoint.TabIndex = 0;
-            this.lblPoint.Text = "Score：0 ";
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnReset
+            // lblBestScore
             // 
-            this.btnReset.Location = new System.Drawing.Point(288, 45);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 1;
-            this.btnReset.Text = "重新遊戲";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.lblBestScore.AutoSize = true;
+            this.lblBestScore.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblBestScore.Location = new System.Drawing.Point(7, 48);
+            this.lblBestScore.Name = "lblBestScore";
+            this.lblBestScore.Size = new System.Drawing.Size(116, 20);
+            this.lblBestScore.TabIndex = 2;
+            this.lblBestScore.Text = "Best Score：0 ";
             // 
             // MainForm
             // 
@@ -376,6 +388,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tSSLPlayTime;
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Label lblBestScore;
     }
 }
 
