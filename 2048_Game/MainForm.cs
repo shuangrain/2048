@@ -34,7 +34,6 @@ namespace _2048_Game
         }
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            NumChangeLocation();
             switch (e.KeyData.ToString())
             {
                 default:
@@ -44,73 +43,44 @@ namespace _2048_Game
                     }
                 case "Up":
                     {
+                        NumChangeLocation();
                         Move_Up();
                         Add_Up();
                         Move_Up();
+                        LocationChangeNum();
+                        CheckStatus();
                         break;
                     }
                 case "Down":
                     {
+                        NumChangeLocation();
                         Move_Down();
                         Add_Down();
                         Move_Down();
+                        LocationChangeNum();
+                        CheckStatus();
                         break;
                     }
                 case "Left":
                     {
+                        NumChangeLocation();
                         Move_Left();
                         Add_Left();
                         Move_Left();
+                        LocationChangeNum();
+                        CheckStatus();
                         break;
                     }
                 case "Right":
                     {
+                        NumChangeLocation();
                         Move_Right();
                         Add_Right();
                         Move_Right();
+                        LocationChangeNum();
+                        CheckStatus();
                         break;
                     }
-            }
-            LocationChangeNum();
-            lblPoint.Text = "Score：" + getPoint;
-            //若數字無移動與數字無相加就不進行動作
-            if (checkmove != 0 || checkadd != 0)
-            {
-                rand();
-                checkmove = 0;
-                checkadd = 0;
-                checkzero = 0;
-            }
-            else if (checkmove == 0 && checkadd == 0 && checkzero == 0)
-            {
-                //檢查是否突破最高分數，若有則寫入紀錄檔
-                try
-                {
-                    StreamReader Read = new StreamReader(@"./Config.Dat", Encoding.UTF8);
-                    string str = Read.ReadToEnd();
-                    Read.Close();
-                    if (str.IndexOf("Best Score") >= 0)
-                    {
-                        if (getPoint > int.Parse(str.Split('：', '\n')[1]))
-                        {
-                            str = str.Replace(str.Split('：', '\n')[1], getPoint.ToString());
-                            StreamWriter Write = new StreamWriter(@"./Config.Dat");
-                            Write.WriteLine(str);
-                            Write.Close();
-                            lblBestScore.Text = "Best Score：" + getPoint;
-                            MessageBox.Show("恭喜突破最高紀錄！");
-                        }
-                        else
-                        {
-                            MessageBox.Show("差一點點，再加油！");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                reset();
             }
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -411,6 +381,7 @@ namespace _2048_Game
                 } while (check == false);
             }
         }
+        //重置
         public void reset()
         {
             foreach (Button obj in groupBox2.Controls)
@@ -419,6 +390,7 @@ namespace _2048_Game
             }
             NumChangeLocation();
             getPoint = 0;
+            PlayTime = 0;
             lblPoint.Text = "Score：" + getPoint;
             rand();
             rand();
@@ -487,6 +459,50 @@ namespace _2048_Game
             e.Graphics.DrawLine(Pen_AL, 0, 13, 0, e.ClipRectangle.Height - 7);
             e.Graphics.DrawLine(Pen_AL, 6, e.ClipRectangle.Height - 1, e.ClipRectangle.Width - 7, e.ClipRectangle.Height - 1);
             e.Graphics.DrawLine(Pen_AL, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 7, e.ClipRectangle.Width - 1, 13);
+        }
+        //檢查目前遊戲狀態
+        public void CheckStatus()
+        {
+            lblPoint.Text = "Score：" + getPoint;
+            //若數字無移動與數字無相加就不進行動作
+            if (checkmove != 0 || checkadd != 0)
+            {
+                rand();
+                checkmove = 0;
+                checkadd = 0;
+                checkzero = 0;
+            }
+            else if (checkmove == 0 && checkadd == 0 && checkzero == 0)
+            {
+                //檢查是否突破最高分數，若有則寫入紀錄檔
+                try
+                {
+                    StreamReader Read = new StreamReader(@"./Config.Dat", Encoding.UTF8);
+                    string str = Read.ReadToEnd();
+                    Read.Close();
+                    if (str.IndexOf("Best Score") >= 0)
+                    {
+                        if (getPoint > int.Parse(str.Split('：', '\n')[1]))
+                        {
+                            str = str.Replace(str.Split('：', '\n')[1], getPoint.ToString());
+                            StreamWriter Write = new StreamWriter(@"./Config.Dat");
+                            Write.WriteLine(str);
+                            Write.Close();
+                            lblBestScore.Text = "Best Score：" + getPoint;
+                            MessageBox.Show("恭喜突破最高紀錄！");
+                        }
+                        else
+                        {
+                            MessageBox.Show("差一點點，再加油！");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                reset();
+            }
         }
     }
 }
