@@ -27,7 +27,11 @@ namespace _2048_Game
         //全域變數
         private void timer1_Tick(object sender, EventArgs e)
         {
-            btnReset.Focus();
+            //若使用者焦點在方塊上則更改焦點
+            if (a1.Focused == true || a2.Focused == true || a3.Focused == true || a4.Focused == true || b1.Focused == true || b2.Focused == true || b3.Focused == true || b4.Focused == true || c1.Focused == true || c2.Focused == true || c3.Focused == true || c4.Focused == true || d1.Focused == true || d2.Focused == true || d3.Focused == true || d4.Focused == true)
+            {
+                btnReset.Focus();
+            }
             PlayTime++;
             tSSLTime.Text = tSSLTime.Text = DateTime.Now.ToString();
             tSSLPlayTime.Text = "已經玩了：" + PlayTime + " 秒";
@@ -85,6 +89,7 @@ namespace _2048_Game
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            cobMode.SelectedIndex = 0;
             //在隨機位置產生兩個隨機的數字
             rand();
             rand();

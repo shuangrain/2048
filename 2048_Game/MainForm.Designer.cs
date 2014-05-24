@@ -55,6 +55,7 @@
             this.tSSLTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSSLPlayTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.cobMode = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -264,6 +265,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cobMode);
             this.groupBox1.Controls.Add(this.lblBestScore);
             this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.lblPoint);
@@ -287,7 +289,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(288, 45);
+            this.btnReset.Location = new System.Drawing.Point(288, 58);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 1;
@@ -336,6 +338,18 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // cobMode
+            // 
+            this.cobMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cobMode.FormattingEnabled = true;
+            this.cobMode.Items.AddRange(new object[] {
+            "經典模式",
+            "步步驚心"});
+            this.cobMode.Location = new System.Drawing.Point(288, 21);
+            this.cobMode.Name = "cobMode";
+            this.cobMode.Size = new System.Drawing.Size(75, 20);
+            this.cobMode.TabIndex = 3;
             // 
             // MainForm
             // 
@@ -393,6 +407,7 @@
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblBestScore;
+        private System.Windows.Forms.ComboBox cobMode;
     }
 }
 
