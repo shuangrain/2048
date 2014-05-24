@@ -83,7 +83,7 @@
             this.groupBox2.Size = new System.Drawing.Size(390, 406);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "  畫面";
+            this.groupBox2.Text = "畫面";
             this.groupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox2_Paint);
             // 
             // d4
@@ -272,7 +272,7 @@
             this.groupBox1.Size = new System.Drawing.Size(378, 87);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "功能區";
+            this.groupBox1.Text = "功能";
             this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox1_Paint);
             // 
             // lblBestScore

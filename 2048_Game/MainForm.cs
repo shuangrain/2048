@@ -474,6 +474,7 @@ namespace _2048_Game
             }
             else if (checkmove == 0 && checkadd == 0 && checkzero == 0)
             {
+                MessageBox.Show("Game Over");
                 //檢查是否突破最高分數，若有則寫入紀錄檔
                 try
                 {
@@ -493,7 +494,7 @@ namespace _2048_Game
                         }
                         else
                         {
-                            MessageBox.Show("差一點點，再加油！");
+                            MessageBox.Show("差一點點突破，再加油！");
                         }
                     }
                 }
