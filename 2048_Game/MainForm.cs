@@ -6,7 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+//讀寫檔案
 using System.IO;
+//畫GroupBox
+using System.Drawing.Drawing2D;
 
 namespace _2048_Game
 {
@@ -34,6 +37,11 @@ namespace _2048_Game
             NumChangeLocation();
             switch (e.KeyData.ToString())
             {
+                default:
+                    {
+                        //無動作
+                        break;
+                    }
                 case "Up":
                     {
                         Move_Up();
@@ -66,7 +74,7 @@ namespace _2048_Game
             LocationChangeNum();
             lblPoint.Text = "Score：" + getPoint;
             //若數字無移動與數字無相加就不進行動作
-            if (checkmove != 0 || checkadd!=0)
+            if (checkmove != 0 || checkadd != 0)
             {
                 rand();
                 checkmove = 0;
@@ -75,7 +83,33 @@ namespace _2048_Game
             }
             else if (checkmove == 0 && checkadd == 0 && checkzero == 0)
             {
-                MessageBox.Show("Game Over");
+                //檢查是否突破最高分數，若有則寫入紀錄檔
+                try
+                {
+                    StreamReader Read = new StreamReader(@"./Config.Dat", Encoding.UTF8);
+                    string str = Read.ReadToEnd();
+                    Read.Close();
+                    if (str.IndexOf("Best Score") >= 0)
+                    {
+                        if (getPoint > int.Parse(str.Split('：', '\n')[1]))
+                        {
+                            str = str.Replace(str.Split('：', '\n')[1], getPoint.ToString());
+                            StreamWriter Write = new StreamWriter(@"./Config.Dat");
+                            Write.WriteLine(str);
+                            Write.Close();
+                            lblBestScore.Text = "Best Score：" + getPoint;
+                            MessageBox.Show("恭喜突破最高紀錄！");
+                        }
+                        else
+                        {
+                            MessageBox.Show("差一點點，再加油！");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 reset();
             }
         }
@@ -84,14 +118,23 @@ namespace _2048_Game
             //在隨機位置產生兩個隨機的數字
             rand();
             rand();
-            //尋找最佳成績
-            //StreamWriter Write = new StreamWriter(@"/1.txt");
-            //Write.WriteLine("");
-            //Write.WriteLine("Best Score：159159");
-            //Write.WriteLine("");
-            //Write.Close();
-            //StreamReader Read = new StreamReader(@"/1.txt", Encoding.UTF8);
-            //Read.Close();
+            //尋找最佳成績，若無則新增一紀錄檔
+            try
+            {
+                StreamReader Read = new StreamReader(@"./Config.Dat", Encoding.UTF8);
+                string str = Read.ReadToEnd();
+                if (str.IndexOf("Best Score") >= 0)
+                {
+                    lblBestScore.Text = "Best Score：" + str.Split('：', '\n')[1];
+                }
+                Read.Close();
+            }
+            catch (Exception)
+            {
+                StreamWriter Write = new StreamWriter(@"./Config.Dat");
+                Write.WriteLine("Best Score：0");
+                Write.Close();
+            }
         }
         public void Add_Up()
         {
@@ -384,6 +427,66 @@ namespace _2048_Game
         private void btnReset_Click(object sender, EventArgs e)
         {
             reset();
+        }
+        //重新繪製groupBox
+        private void groupBox1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(groupBox1.BackColor);
+
+            Rectangle Rtg_LT = new Rectangle();
+            Rectangle Rtg_RT = new Rectangle();
+            Rectangle Rtg_LB = new Rectangle();
+            Rectangle Rtg_RB = new Rectangle();
+            Rtg_LT.X = 0; Rtg_LT.Y = 7; Rtg_LT.Width = 10; Rtg_LT.Height = 10;
+            Rtg_RT.X = e.ClipRectangle.Width - 11; Rtg_RT.Y = 7; Rtg_RT.Width = 10; Rtg_RT.Height = 10;
+            Rtg_LB.X = 0; Rtg_LB.Y = e.ClipRectangle.Height - 11; Rtg_LB.Width = 10; Rtg_LB.Height = 10;
+            Rtg_RB.X = e.ClipRectangle.Width - 11; Rtg_RB.Y = e.ClipRectangle.Height - 11; Rtg_RB.Width = 10; Rtg_RB.Height = 10;
+
+            Color color = Color.FromArgb(51, 94, 168);
+            Pen Pen_AL = new Pen(color, 1);
+            Pen_AL.Color = color;
+            Brush brush = new HatchBrush(HatchStyle.Divot, color);
+
+            e.Graphics.DrawString(groupBox1.Text, groupBox1.Font, brush, 6, 0);
+            e.Graphics.DrawArc(Pen_AL, Rtg_LT, 180, 90);
+            e.Graphics.DrawArc(Pen_AL, Rtg_RT, 270, 90);
+            e.Graphics.DrawArc(Pen_AL, Rtg_LB, 90, 90);
+            e.Graphics.DrawArc(Pen_AL, Rtg_RB, 0, 90);
+            e.Graphics.DrawLine(Pen_AL, 5, 7, 6, 7);
+            e.Graphics.DrawLine(Pen_AL, e.Graphics.MeasureString(groupBox1.Text, groupBox1.Font).Width + 3, 7, e.ClipRectangle.Width - 7, 7);
+            e.Graphics.DrawLine(Pen_AL, 0, 13, 0, e.ClipRectangle.Height - 7);
+            e.Graphics.DrawLine(Pen_AL, 6, e.ClipRectangle.Height - 1, e.ClipRectangle.Width - 7, e.ClipRectangle.Height - 1);
+            e.Graphics.DrawLine(Pen_AL, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 7, e.ClipRectangle.Width - 1, 13);
+        }
+        //重新繪製groupBox
+        private void groupBox2_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(groupBox2.BackColor);
+
+            Rectangle Rtg_LT = new Rectangle();
+            Rectangle Rtg_RT = new Rectangle();
+            Rectangle Rtg_LB = new Rectangle();
+            Rectangle Rtg_RB = new Rectangle();
+            Rtg_LT.X = 0; Rtg_LT.Y = 7; Rtg_LT.Width = 10; Rtg_LT.Height = 10;
+            Rtg_RT.X = e.ClipRectangle.Width - 11; Rtg_RT.Y = 7; Rtg_RT.Width = 10; Rtg_RT.Height = 10;
+            Rtg_LB.X = 0; Rtg_LB.Y = e.ClipRectangle.Height - 11; Rtg_LB.Width = 10; Rtg_LB.Height = 10;
+            Rtg_RB.X = e.ClipRectangle.Width - 11; Rtg_RB.Y = e.ClipRectangle.Height - 11; Rtg_RB.Width = 10; Rtg_RB.Height = 10;
+
+            Color color = Color.FromArgb(51, 94, 168);
+            Pen Pen_AL = new Pen(color, 1);
+            Pen_AL.Color = color;
+            Brush brush = new HatchBrush(HatchStyle.Divot, color);
+
+            e.Graphics.DrawString(groupBox2.Text, groupBox2.Font, brush, 6, 0);
+            e.Graphics.DrawArc(Pen_AL, Rtg_LT, 180, 90);
+            e.Graphics.DrawArc(Pen_AL, Rtg_RT, 270, 90);
+            e.Graphics.DrawArc(Pen_AL, Rtg_LB, 90, 90);
+            e.Graphics.DrawArc(Pen_AL, Rtg_RB, 0, 90);
+            e.Graphics.DrawLine(Pen_AL, 5, 7, 6, 7);
+            e.Graphics.DrawLine(Pen_AL, e.Graphics.MeasureString(groupBox2.Text, groupBox2.Font).Width + 3, 7, e.ClipRectangle.Width - 7, 7);
+            e.Graphics.DrawLine(Pen_AL, 0, 13, 0, e.ClipRectangle.Height - 7);
+            e.Graphics.DrawLine(Pen_AL, 6, e.ClipRectangle.Height - 1, e.ClipRectangle.Width - 7, e.ClipRectangle.Height - 1);
+            e.Graphics.DrawLine(Pen_AL, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 7, e.ClipRectangle.Width - 1, 13);
         }
     }
 }

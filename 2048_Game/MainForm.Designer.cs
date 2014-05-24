@@ -48,13 +48,13 @@
             this.a2 = new System.Windows.Forms.Button();
             this.a1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblBestScore = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblPoint = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tSSLTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSSLPlayTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblBestScore = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -83,7 +83,8 @@
             this.groupBox2.Size = new System.Drawing.Size(390, 406);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "遊戲畫面";
+            this.groupBox2.Text = "  畫面";
+            this.groupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox2_Paint);
             // 
             // d4
             // 
@@ -272,6 +273,17 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "功能區";
+            this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox1_Paint);
+            // 
+            // lblBestScore
+            // 
+            this.lblBestScore.AutoSize = true;
+            this.lblBestScore.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblBestScore.Location = new System.Drawing.Point(7, 48);
+            this.lblBestScore.Name = "lblBestScore";
+            this.lblBestScore.Size = new System.Drawing.Size(116, 20);
+            this.lblBestScore.TabIndex = 2;
+            this.lblBestScore.Text = "Best Score：0 ";
             // 
             // btnReset
             // 
@@ -295,6 +307,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tSSLTime,
             this.tSSLPlayTime});
@@ -324,20 +337,11 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lblBestScore
-            // 
-            this.lblBestScore.AutoSize = true;
-            this.lblBestScore.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblBestScore.Location = new System.Drawing.Point(7, 48);
-            this.lblBestScore.Name = "lblBestScore";
-            this.lblBestScore.Size = new System.Drawing.Size(116, 20);
-            this.lblBestScore.TabIndex = 2;
-            this.lblBestScore.Text = "Best Score：0 ";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(414, 531);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
