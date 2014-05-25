@@ -30,10 +30,10 @@ namespace _2048_Game
             //若使用者焦點在方塊上則更改焦點
             if (a1.Focused == true || a2.Focused == true || a3.Focused == true || a4.Focused == true || b1.Focused == true || b2.Focused == true || b3.Focused == true || b4.Focused == true || c1.Focused == true || c2.Focused == true || c3.Focused == true || c4.Focused == true || d1.Focused == true || d2.Focused == true || d3.Focused == true || d4.Focused == true)
             {
-                btnReset.Focus();
+                lblPoint.Focus();
             }
             PlayTime++;
-            tSSLTime.Text = tSSLTime.Text = DateTime.Now.ToString();
+            tSSLTime.Text = DateTime.Now.ToString();
             tSSLPlayTime.Text = "已經玩了：" + PlayTime + " 秒";
         }
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -89,7 +89,7 @@ namespace _2048_Game
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            cobMode.SelectedIndex = 0;
+            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n如果16個格子全部填滿並且動到無法相加的一步時\n那麼恭喜你  GameOver！","遊戲說明");
             //在隨機位置產生兩個隨機的數字
             rand();
             rand();
@@ -400,11 +400,6 @@ namespace _2048_Game
             rand();
             rand();
         }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            reset();
-        }
         //重新繪製groupBox
         private void groupBox1_Paint(object sender, PaintEventArgs e)
         {
@@ -510,5 +505,58 @@ namespace _2048_Game
                 reset();
             }
         }
+
+        private void TSMIReset_Click(object sender, EventArgs e)
+        {
+            reset();
+        }
+        //public void NumColor(int NumCheck)
+        //{
+        //    int Num2 = 0,Num4=0,Num8=0,Num16=0,Num32=0,Num64=0,Num128=0,Num256=0,Num512=0,Num1024=0,Num2048=0;
+        //    if (NumCheck % 2 == 0)
+        //    {
+        //        Num2 = NumCheck / 2;
+        //    }
+        //    else if (NumCheck % 4 == 0)
+        //    {
+        //        Num4 = NumCheck / 4;
+        //    }
+        //    else if (NumCheck % 8 == 0)
+        //    {
+        //        Num8 = NumCheck / 8;
+        //    }
+        //    else if (NumCheck % 16 == 0)
+        //    {
+        //        Num16 = NumCheck / 16;
+        //    }
+        //    else if (NumCheck % 32 == 0)
+        //    {
+        //        Num32 = NumCheck / 32;
+        //    }
+        //    else if (NumCheck % 64 == 0)
+        //    {
+        //        Num64 = NumCheck / 64;
+        //    }
+        //    else if (NumCheck % 128 == 0)
+        //    {
+        //        Num128 = NumCheck / 128;
+        //    }
+        //    else if (NumCheck % 256 == 0)
+        //    {
+        //        Num256 = NumCheck / 256;
+        //    }
+        //    else if (NumCheck % 512 == 0)
+        //    {
+        //        Num512 = NumCheck / 512;
+        //    }
+        //    else if (NumCheck % 1024 == 0)
+        //    {
+        //        Num1024 = NumCheck / 1024;
+        //    }
+        //    else if (NumCheck % 2048 == 0)
+        //    {
+        //        Num2048 = NumCheck / 2048;
+        //    }
+        //}
     }
 }
