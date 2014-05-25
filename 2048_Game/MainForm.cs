@@ -463,6 +463,14 @@ namespace _2048_Game
         //檢查目前遊戲狀態
         public void CheckStatus()
         {
+            //通關提示語
+            foreach (Button obj in groupBox2.Controls)
+            {
+                if (obj.Text == "2048")
+                {
+                    MessageBox.Show("恭喜達到2048！");
+                }
+            }
             lblPoint.Text = "Score：" + getPoint;
             //若數字無移動與數字無相加就不進行動作
             if (checkmove != 0 || checkadd != 0)
@@ -498,9 +506,12 @@ namespace _2048_Game
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    StreamWriter Write = new StreamWriter(@"./Config.Dat");
+                    Write.WriteLine("Best Score：" + getPoint);
+                    Write.Close();
+                    lblBestScore.Text = "Best Score：" + getPoint;
                 }
                 reset();
             }
