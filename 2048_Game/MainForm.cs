@@ -409,8 +409,6 @@ namespace _2048_Game
             NumChangeLocation();
             getPoint = 0;
             PlayTime = 0;
-            CheckMove = 0;
-            CheckAdd = 0;
             CheckTimeMode = false;
             lblPoint.Text = "Score：" + getPoint;
             if (statusStrip1.Items.Count > 2)
@@ -597,7 +595,7 @@ namespace _2048_Game
                 if (TSMIMove.Checked == true)
                 {
                     //Move模式如果成功相加步數+1
-                    if (CheckAdd != 0)
+                    if (CheckAdd > 0)
                     {
                         CheckRule++;
                     }
@@ -641,6 +639,8 @@ namespace _2048_Game
                 Reset();
                 FirstLoad();
             }
+            CheckMove = 0;
+            CheckAdd = 0;
         }
         //檢查是否突破最高分數，若有則寫入紀錄檔
         public void SaveScore(string SaveName, int SaveLine)
