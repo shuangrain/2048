@@ -22,8 +22,8 @@ namespace _2048_Game
         //全域變數
         int[,] Location_ex = new int[4, 4];
         int PlayTime = 0, getPoint = 0;
-        bool Check, CheckTimeMode, CheckMoveMode;
-        int CheckMove = 0, CheckAdd = 0, CheckActive = 0, CheckRule = 100;
+        bool Check, CheckTimeMode;
+        int CheckMove = 0, CheckAdd = 0, CheckActive = 0, CheckRule = 30;
         //全域變數
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -43,7 +43,7 @@ namespace _2048_Game
             if (CheckRule == 0)
             {
                 CheckTimeMode = false;
-                CheckRule = 100;
+                CheckRule = 30;
                 CheckStatus();
             }
         }
@@ -409,6 +409,8 @@ namespace _2048_Game
             NumChangeLocation();
             getPoint = 0;
             PlayTime = 0;
+            CheckMove = 0;
+            CheckAdd = 0;
             CheckTimeMode = false;
             lblPoint.Text = "Score：" + getPoint;
             if (statusStrip1.Items.Count > 2)
@@ -417,14 +419,13 @@ namespace _2048_Game
             }
             if (TSMITime.Checked == true)
             {
-                CheckRule = 100;
+                CheckRule = 30;
                 CheckTimeMode = true;
                 statusStrip1.Items.Add("倒數：" + CheckRule + " 秒");
             }
             else if (TSMIMove.Checked == true)
             {
-                CheckRule = 100;
-                CheckMoveMode = true;
+                CheckRule = 30;
                 statusStrip1.Items.Add("可動：" + CheckRule + " 步");
             }
             else if (TSMIX.Checked == true)
@@ -592,20 +593,31 @@ namespace _2048_Game
             //若數字無移動與數字無相加就不進行動作
             if (CheckMove != 0 || CheckAdd != 0)
             {
-                Rand();
-                CheckMove = 0;
-                CheckAdd = 0;
                 //Move模式動一步就-1
                 if (TSMIMove.Checked == true)
                 {
-                    CheckRule--;
+                    //Move模式如果成功相加步數+1
+                    if (CheckAdd != 0)
+                    {
+                        CheckRule++;
+                    }
+                    else
+                    {
+                        CheckRule--;
+                    }
                     statusStrip1.Items[2].Text = "可動：" + CheckRule + " 步";
                     //Move模式步數用完
-                    if (CheckRule==0 && TSMIMove.Checked == true)
+                    if (CheckRule == 0 && TSMIMove.Checked == true)
                     {
                         CheckActive = 0;
                     }
                 }
+                //Time模式如果成功相加秒數+1
+                if (TSMITime.Checked == true && CheckAdd > 0)
+                {
+                    CheckRule++;
+                }
+                Rand();
             }
             if (CheckActive == 0)
             {
@@ -620,7 +632,7 @@ namespace _2048_Game
                 }
                 else if (TSMIMove.Checked == true)
                 {
-                    SaveScore(TSMITime.Text, 5);
+                    SaveScore(TSMIMove.Text, 5);
                 }
                 else if (TSMIX.Checked == true)
                 {
@@ -781,6 +793,7 @@ namespace _2048_Game
             Reset();
             FirstLoad();
             ReadScore(TSMIClassic.Text, 1);
+            this.Text = "2048  [Classic]";
         }
 
         private void TSMITime_Click(object sender, EventArgs e)
@@ -791,6 +804,7 @@ namespace _2048_Game
             Reset();
             FirstLoad();
             ReadScore(TSMITime.Text, 3);
+            this.Text = "2048  [Time]";
         }
 
         private void TSMIMove_Click(object sender, EventArgs e)
@@ -801,6 +815,7 @@ namespace _2048_Game
             Reset();
             FirstLoad();
             ReadScore(TSMITime.Text, 5);
+            this.Text = "2048  [Move]";
         }
         private void TSMIX_Click(object sender, EventArgs e)
         {
@@ -808,12 +823,12 @@ namespace _2048_Game
         }
         private void TSMIAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("U101B117  許民聖", "視窗程式設計期末專題報告");
+            MessageBox.Show("By.shuangrain", "視窗程式設計期末專題報告");
         }
 
         private void TSMIRules_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n Classic：如果格子填滿且無法相加或移動時結算\n\n Time：如果剩下秒數為零時結算\n\n Move：如果剩下步數為零時結算\n\n ", "遊戲說明");
+            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n Classic：如果格子填滿且無法相加或移動時結算\n\n Time：如果數字成功相加秒數會加一，剩下秒數為零時結算\n\n Move：如果數字成功相加步數會加一，剩下步數為零時結算\n\n ", "遊戲說明");
         }
     }
 }

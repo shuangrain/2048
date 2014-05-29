@@ -61,8 +61,8 @@
             this.TSMITime = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIMove = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIX = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIRules = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -387,7 +387,7 @@
             // 
             this.TSMIClassic.CheckOnClick = true;
             this.TSMIClassic.Name = "TSMIClassic";
-            this.TSMIClassic.Size = new System.Drawing.Size(152, 22);
+            this.TSMIClassic.Size = new System.Drawing.Size(128, 22);
             this.TSMIClassic.Text = "Classic";
             this.TSMIClassic.Click += new System.EventHandler(this.TSMIClassic_Click);
             // 
@@ -395,7 +395,7 @@
             // 
             this.TSMITime.CheckOnClick = true;
             this.TSMITime.Name = "TSMITime";
-            this.TSMITime.Size = new System.Drawing.Size(152, 22);
+            this.TSMITime.Size = new System.Drawing.Size(128, 22);
             this.TSMITime.Text = "Time";
             this.TSMITime.Click += new System.EventHandler(this.TSMITime_Click);
             // 
@@ -403,23 +403,16 @@
             // 
             this.TSMIMove.CheckOnClick = true;
             this.TSMIMove.Name = "TSMIMove";
-            this.TSMIMove.Size = new System.Drawing.Size(152, 22);
+            this.TSMIMove.Size = new System.Drawing.Size(128, 22);
             this.TSMIMove.Text = "Move";
             this.TSMIMove.Click += new System.EventHandler(this.TSMIMove_Click);
             // 
             // TSMIX
             // 
             this.TSMIX.Name = "TSMIX";
-            this.TSMIX.Size = new System.Drawing.Size(152, 22);
+            this.TSMIX.Size = new System.Drawing.Size(128, 22);
             this.TSMIX.Text = "X(未完成)";
             this.TSMIX.Click += new System.EventHandler(this.TSMIX_Click);
-            // 
-            // TSMIAbout
-            // 
-            this.TSMIAbout.Name = "TSMIAbout";
-            this.TSMIAbout.Size = new System.Drawing.Size(55, 20);
-            this.TSMIAbout.Text = "About";
-            this.TSMIAbout.Click += new System.EventHandler(this.TSMIAbout_Click);
             // 
             // TSMIRules
             // 
@@ -427,6 +420,13 @@
             this.TSMIRules.Size = new System.Drawing.Size(50, 20);
             this.TSMIRules.Text = "Rules";
             this.TSMIRules.Click += new System.EventHandler(this.TSMIRules_Click);
+            // 
+            // TSMIAbout
+            // 
+            this.TSMIAbout.Name = "TSMIAbout";
+            this.TSMIAbout.Size = new System.Drawing.Size(55, 20);
+            this.TSMIAbout.Text = "About";
+            this.TSMIAbout.Click += new System.EventHandler(this.TSMIAbout_Click);
             // 
             // MainForm
             // 
@@ -446,7 +446,7 @@
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "2048   By.shuangrain";
+            this.Text = "2048";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.groupBox2.ResumeLayout(false);
