@@ -89,10 +89,9 @@ namespace _2048_Game
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n如果16個格子全部填滿並且動到無法相加的一步時\n那麼恭喜你  GameOver！","遊戲說明");
+            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n如果16個格子全部填滿並且動到無法相加的一步時\n那麼恭喜你  GameOver！", "遊戲說明");
             //在隨機位置產生兩個隨機的數字
-            rand();
-            rand();
+            FirstLoad();
             //尋找最佳成績，若無則新增一紀錄檔
             try
             {
@@ -110,6 +109,24 @@ namespace _2048_Game
                 Write.WriteLine("Best Score：0");
                 Write.Close();
             }
+        }
+        public void FirstLoad()
+        {
+            int FirstCheck = 0;
+            do
+            {
+                FirstCheck = 0;
+                reset();
+                rand();
+                rand();
+                foreach (Button obj in groupBox2.Controls)
+                {
+                    if (obj.Text == "4")
+                    {
+                        FirstCheck++;
+                    }
+                }
+            } while (FirstCheck ==2);
         }
         public void Add_Up()
         {
@@ -385,6 +402,7 @@ namespace _2048_Game
                     }
                 } while (check == false);
             }
+            NumColor();
         }
         //重置
         public void reset()
@@ -397,8 +415,6 @@ namespace _2048_Game
             getPoint = 0;
             PlayTime = 0;
             lblPoint.Text = "Score：" + getPoint;
-            rand();
-            rand();
         }
         //重新繪製groupBox
         private void groupBox1_Paint(object sender, PaintEventArgs e)
@@ -514,60 +530,68 @@ namespace _2048_Game
                     lblBestScore.Text = "Best Score：" + getPoint;
                 }
                 reset();
+                FirstLoad();
             }
         }
 
         private void TSMIReset_Click(object sender, EventArgs e)
         {
             reset();
+            FirstLoad();
         }
-        //public void NumColor(int NumCheck)
-        //{
-        //    int Num2 = 0,Num4=0,Num8=0,Num16=0,Num32=0,Num64=0,Num128=0,Num256=0,Num512=0,Num1024=0,Num2048=0;
-        //    if (NumCheck % 2 == 0)
-        //    {
-        //        Num2 = NumCheck / 2;
-        //    }
-        //    else if (NumCheck % 4 == 0)
-        //    {
-        //        Num4 = NumCheck / 4;
-        //    }
-        //    else if (NumCheck % 8 == 0)
-        //    {
-        //        Num8 = NumCheck / 8;
-        //    }
-        //    else if (NumCheck % 16 == 0)
-        //    {
-        //        Num16 = NumCheck / 16;
-        //    }
-        //    else if (NumCheck % 32 == 0)
-        //    {
-        //        Num32 = NumCheck / 32;
-        //    }
-        //    else if (NumCheck % 64 == 0)
-        //    {
-        //        Num64 = NumCheck / 64;
-        //    }
-        //    else if (NumCheck % 128 == 0)
-        //    {
-        //        Num128 = NumCheck / 128;
-        //    }
-        //    else if (NumCheck % 256 == 0)
-        //    {
-        //        Num256 = NumCheck / 256;
-        //    }
-        //    else if (NumCheck % 512 == 0)
-        //    {
-        //        Num512 = NumCheck / 512;
-        //    }
-        //    else if (NumCheck % 1024 == 0)
-        //    {
-        //        Num1024 = NumCheck / 1024;
-        //    }
-        //    else if (NumCheck % 2048 == 0)
-        //    {
-        //        Num2048 = NumCheck / 2048;
-        //    }
-        //}
+        public void NumColor()
+        {
+            foreach (Button obj in groupBox2.Controls)
+            {
+                if (obj.Text == "2")
+                {
+                    obj.BackColor = Color.Pink;
+                }
+                else if (obj.Text == "4")
+                {
+                    obj.BackColor = Color.Plum;
+                }
+                else if (obj.Text == "8")
+                {
+                    obj.BackColor = Color.PowderBlue;
+                }
+                else if (obj.Text == "16")
+                {
+                    obj.BackColor = Color.Purple;
+                }
+                else if (obj.Text == "32")
+                {
+                    obj.BackColor = Color.Red;
+                }
+                else if (obj.Text == "64")
+                {
+                    obj.BackColor = Color.RosyBrown;
+                }
+                else if (obj.Text == "128")
+                {
+                    obj.BackColor = Color.RoyalBlue;
+                }
+                else if (obj.Text == "256")
+                {
+                    obj.BackColor = Color.SaddleBrown;
+                }
+                else if (obj.Text == "512")
+                {
+                    obj.BackColor = Color.Salmon;
+                }
+                else if (obj.Text == "1024")
+                {
+                    obj.BackColor = Color.SandyBrown;
+                }
+                else if (obj.Text == "2048")
+                {
+                    obj.BackColor = Color.SeaGreen;
+                }
+                else if (obj.Text == "")
+                {
+                    obj.BackColor = Button.DefaultBackColor;
+                }
+            }
+        }
     }
 }
