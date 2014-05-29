@@ -57,7 +57,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.TSMIReset = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIClassic = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMITime = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIMove = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIX = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIRules = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -352,6 +357,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMIReset,
             this.TSMIMode,
+            this.TSMIRules,
             this.TSMIAbout});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -368,15 +374,59 @@
             // 
             // TSMIMode
             // 
+            this.TSMIMode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMIClassic,
+            this.TSMITime,
+            this.TSMIMove,
+            this.TSMIX});
             this.TSMIMode.Name = "TSMIMode";
             this.TSMIMode.Size = new System.Drawing.Size(55, 20);
             this.TSMIMode.Text = "Mode";
+            // 
+            // TSMIClassic
+            // 
+            this.TSMIClassic.CheckOnClick = true;
+            this.TSMIClassic.Name = "TSMIClassic";
+            this.TSMIClassic.Size = new System.Drawing.Size(152, 22);
+            this.TSMIClassic.Text = "Classic";
+            this.TSMIClassic.Click += new System.EventHandler(this.TSMIClassic_Click);
+            // 
+            // TSMITime
+            // 
+            this.TSMITime.CheckOnClick = true;
+            this.TSMITime.Name = "TSMITime";
+            this.TSMITime.Size = new System.Drawing.Size(152, 22);
+            this.TSMITime.Text = "Time";
+            this.TSMITime.Click += new System.EventHandler(this.TSMITime_Click);
+            // 
+            // TSMIMove
+            // 
+            this.TSMIMove.CheckOnClick = true;
+            this.TSMIMove.Name = "TSMIMove";
+            this.TSMIMove.Size = new System.Drawing.Size(152, 22);
+            this.TSMIMove.Text = "Move";
+            this.TSMIMove.Click += new System.EventHandler(this.TSMIMove_Click);
+            // 
+            // TSMIX
+            // 
+            this.TSMIX.Name = "TSMIX";
+            this.TSMIX.Size = new System.Drawing.Size(152, 22);
+            this.TSMIX.Text = "X(未完成)";
+            this.TSMIX.Click += new System.EventHandler(this.TSMIX_Click);
             // 
             // TSMIAbout
             // 
             this.TSMIAbout.Name = "TSMIAbout";
             this.TSMIAbout.Size = new System.Drawing.Size(55, 20);
             this.TSMIAbout.Text = "About";
+            this.TSMIAbout.Click += new System.EventHandler(this.TSMIAbout_Click);
+            // 
+            // TSMIRules
+            // 
+            this.TSMIRules.Name = "TSMIRules";
+            this.TSMIRules.Size = new System.Drawing.Size(50, 20);
+            this.TSMIRules.Text = "Rules";
+            this.TSMIRules.Click += new System.EventHandler(this.TSMIRules_Click);
             // 
             // MainForm
             // 
@@ -441,6 +491,11 @@
         private System.Windows.Forms.ToolStripMenuItem TSMIReset;
         private System.Windows.Forms.ToolStripMenuItem TSMIMode;
         private System.Windows.Forms.ToolStripMenuItem TSMIAbout;
+        private System.Windows.Forms.ToolStripMenuItem TSMIClassic;
+        private System.Windows.Forms.ToolStripMenuItem TSMITime;
+        private System.Windows.Forms.ToolStripMenuItem TSMIMove;
+        private System.Windows.Forms.ToolStripMenuItem TSMIX;
+        private System.Windows.Forms.ToolStripMenuItem TSMIRules;
     }
 }
 
