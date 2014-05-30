@@ -23,7 +23,7 @@ namespace _2048_Game
         int[,] Location_ex = new int[4, 4];
         int PlayTime = 0, getPoint = 0;
         bool Check, CheckTimeMode;
-        int CheckMove = 0, CheckAdd = 0, CheckActive = 0, CheckRule = 30;
+        int CheckMove = 0, CheckAdd = 0, CheckActive = 0, CheckRule;
         //全域變數
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -43,7 +43,7 @@ namespace _2048_Game
             if (CheckRule == 0)
             {
                 CheckTimeMode = false;
-                CheckRule = 30;
+                CheckRule = 10;
                 CheckStatus();
             }
         }
@@ -417,13 +417,13 @@ namespace _2048_Game
             }
             if (TSMITime.Checked == true)
             {
-                CheckRule = 30;
+                CheckRule = 10;
                 CheckTimeMode = true;
                 statusStrip1.Items.Add("倒數：" + CheckRule + " 秒");
             }
             else if (TSMIMove.Checked == true)
             {
-                CheckRule = 30;
+                CheckRule = 3;
                 statusStrip1.Items.Add("可動：" + CheckRule + " 步");
             }
             else if (TSMIX.Checked == true)
@@ -595,7 +595,7 @@ namespace _2048_Game
                 if (TSMIMove.Checked == true)
                 {
                     //Move模式如果成功相加步數+1
-                    if (CheckAdd > 0)
+                    if (CheckAdd > 0 && CheckRule < 5)
                     {
                         CheckRule++;
                     }
@@ -611,7 +611,7 @@ namespace _2048_Game
                     }
                 }
                 //Time模式如果成功相加秒數+1
-                if (TSMITime.Checked == true && CheckAdd > 0)
+                if (TSMITime.Checked == true && CheckAdd > 0 && CheckRule < 10)
                 {
                     CheckRule++;
                 }
@@ -828,7 +828,7 @@ namespace _2048_Game
 
         private void TSMIRules_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n Classic：如果格子填滿且無法相加或移動時結算\n\n Time：如果數字成功相加秒數會加一，剩下秒數為零時結算\n\n Move：如果數字成功相加步數會加一，剩下步數為零時結算\n\n ", "遊戲說明");
+            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n Classic：如果格子填滿且無法相加或移動時結算\n\n Time：如果數字成功相加秒數會加一上限十秒，剩下秒數為零時結算\n\n Move：如果數字成功相加步數會加一上限五步，剩下步數為零時結算\n\n ", "遊戲說明");
         }
     }
 }
