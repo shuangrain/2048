@@ -387,7 +387,7 @@
             // 
             this.TSMIClassic.CheckOnClick = true;
             this.TSMIClassic.Name = "TSMIClassic";
-            this.TSMIClassic.Size = new System.Drawing.Size(128, 22);
+            this.TSMIClassic.Size = new System.Drawing.Size(152, 22);
             this.TSMIClassic.Text = "Classic";
             this.TSMIClassic.Click += new System.EventHandler(this.TSMIClassic_Click);
             // 
@@ -395,7 +395,7 @@
             // 
             this.TSMITime.CheckOnClick = true;
             this.TSMITime.Name = "TSMITime";
-            this.TSMITime.Size = new System.Drawing.Size(128, 22);
+            this.TSMITime.Size = new System.Drawing.Size(152, 22);
             this.TSMITime.Text = "Time";
             this.TSMITime.Click += new System.EventHandler(this.TSMITime_Click);
             // 
@@ -403,15 +403,15 @@
             // 
             this.TSMIMove.CheckOnClick = true;
             this.TSMIMove.Name = "TSMIMove";
-            this.TSMIMove.Size = new System.Drawing.Size(128, 22);
+            this.TSMIMove.Size = new System.Drawing.Size(152, 22);
             this.TSMIMove.Text = "Move";
             this.TSMIMove.Click += new System.EventHandler(this.TSMIMove_Click);
             // 
             // TSMIX
             // 
             this.TSMIX.Name = "TSMIX";
-            this.TSMIX.Size = new System.Drawing.Size(128, 22);
-            this.TSMIX.Text = "X(未完成)";
+            this.TSMIX.Size = new System.Drawing.Size(152, 22);
+            this.TSMIX.Text = "X";
             this.TSMIX.Click += new System.EventHandler(this.TSMIX_Click);
             // 
             // TSMIRules

@@ -43,7 +43,7 @@ namespace _2048_Game
             if (CheckRule == 0)
             {
                 CheckTimeMode = false;
-                CheckRule = 10;
+                CheckRule = 5;
                 CheckStatus();
             }
         }
@@ -123,6 +123,26 @@ namespace _2048_Game
                     }
                 }
             } while (FirstCheck == 2);
+            if(TSMIX.Checked==true)
+            {
+                //隨機產生一障礙物
+                NumChangeLocation();
+                Check = false;
+                Random obj = new Random();
+                int x = 0, y = 0;
+                do
+                {
+                    x = obj.Next(0, 4);
+                    y = obj.Next(0, 4);
+                    if (Location_ex[x, y] == 0)
+                    {
+                        Check = true;
+                        Location_ex[x, y] = 10;
+                        LocationChangeNum();
+                    }
+                } while (Check == false);
+                NumColor();
+            }
         }
         public void Add_Up()
         {
@@ -622,19 +642,19 @@ namespace _2048_Game
                 MessageBox.Show("Game Over");
                 if (TSMIClassic.Checked == true)
                 {
-                    SaveScore(TSMIClassic.Text, 1);
+                    WriteScore(TSMIClassic.Text, 1);
                 }
                 else if (TSMITime.Checked == true)
                 {
-                    SaveScore(TSMITime.Text, 3);
+                    WriteScore(TSMITime.Text, 3);
                 }
                 else if (TSMIMove.Checked == true)
                 {
-                    SaveScore(TSMIMove.Text, 5);
+                    WriteScore(TSMIMove.Text, 5);
                 }
                 else if (TSMIX.Checked == true)
                 {
-                    SaveScore(TSMIX.Text, 4);
+                    WriteScore(TSMIX.Text, 7);
                 }
                 Reset();
                 FirstLoad();
@@ -643,7 +663,7 @@ namespace _2048_Game
             CheckAdd = 0;
         }
         //檢查是否突破最高分數，若有則寫入紀錄檔
-        public void SaveScore(string SaveName, int SaveLine)
+        public void WriteScore(string SaveName, int SaveLine)
         {
             try
             {
@@ -782,6 +802,10 @@ namespace _2048_Game
                 {
                     obj.BackColor = Button.DefaultBackColor;
                 }
+                else if (obj.Text == "10")
+                {
+                    obj.BackColor = Color.Black;
+                }
             }
         }
 
@@ -790,6 +814,7 @@ namespace _2048_Game
             TSMIClassic.Checked = true;
             TSMITime.Checked = false;
             TSMIMove.Checked = false;
+            TSMIX.Checked = false;
             Reset();
             FirstLoad();
             ReadScore(TSMIClassic.Text, 1);
@@ -801,6 +826,7 @@ namespace _2048_Game
             TSMIClassic.Checked = false;
             TSMITime.Checked = true;
             TSMIMove.Checked = false;
+            TSMIX.Checked = false;
             Reset();
             FirstLoad();
             ReadScore(TSMITime.Text, 3);
@@ -812,6 +838,7 @@ namespace _2048_Game
             TSMIClassic.Checked = false;
             TSMITime.Checked = false;
             TSMIMove.Checked = true;
+            TSMIX.Checked = false;
             Reset();
             FirstLoad();
             ReadScore(TSMITime.Text, 5);
@@ -819,7 +846,14 @@ namespace _2048_Game
         }
         private void TSMIX_Click(object sender, EventArgs e)
         {
-
+            TSMIClassic.Checked = false;
+            TSMITime.Checked = false;
+            TSMIMove.Checked = false;
+            TSMIX.Checked = true;
+            Reset();
+            FirstLoad();
+            ReadScore(TSMIX.Text, 7);
+            this.Text = "2048  [X]";
         }
         private void TSMIAbout_Click(object sender, EventArgs e)
         {
@@ -828,7 +862,7 @@ namespace _2048_Game
 
         private void TSMIRules_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n Classic：如果格子填滿且無法相加或移動時結算\n\n Time：如果數字成功相加秒數會加一上限十秒，剩下秒數為零時結算\n\n Move：如果數字成功相加步數會加一上限五步，剩下步數為零時結算\n\n ", "遊戲說明");
+            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n Classic：如果格子填滿且無法相加或移動時結算。\n\n Time：如果數字成功相加秒數會加一上限十秒，剩下秒數為零時結算。\n\n Move：如果數字成功相加步數會加一上限五步，剩下步數為零時結算。\n\n X：隨機產生一格障礙物，且會隨著數字移動，如果格子填滿且無法相加或移動時結算。", "遊戲說明");
         }
     }
 }
