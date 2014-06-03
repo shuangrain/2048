@@ -62,6 +62,7 @@
             this.TSMIMove = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIX = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIRules = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIRank = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -325,7 +326,6 @@
             this.tSSLPlayTime});
             this.statusStrip1.Location = new System.Drawing.Point(0, 541);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
             this.statusStrip1.Size = new System.Drawing.Size(401, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 6;
@@ -353,11 +353,12 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMIReset,
             this.TSMIMode,
             this.TSMIRules,
+            this.TSMIRank,
             this.TSMIAbout});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -387,7 +388,7 @@
             // 
             this.TSMIClassic.CheckOnClick = true;
             this.TSMIClassic.Name = "TSMIClassic";
-            this.TSMIClassic.Size = new System.Drawing.Size(152, 22);
+            this.TSMIClassic.Size = new System.Drawing.Size(113, 22);
             this.TSMIClassic.Text = "Classic";
             this.TSMIClassic.Click += new System.EventHandler(this.TSMIClassic_Click);
             // 
@@ -395,7 +396,7 @@
             // 
             this.TSMITime.CheckOnClick = true;
             this.TSMITime.Name = "TSMITime";
-            this.TSMITime.Size = new System.Drawing.Size(152, 22);
+            this.TSMITime.Size = new System.Drawing.Size(113, 22);
             this.TSMITime.Text = "Time";
             this.TSMITime.Click += new System.EventHandler(this.TSMITime_Click);
             // 
@@ -403,14 +404,14 @@
             // 
             this.TSMIMove.CheckOnClick = true;
             this.TSMIMove.Name = "TSMIMove";
-            this.TSMIMove.Size = new System.Drawing.Size(152, 22);
+            this.TSMIMove.Size = new System.Drawing.Size(113, 22);
             this.TSMIMove.Text = "Move";
             this.TSMIMove.Click += new System.EventHandler(this.TSMIMove_Click);
             // 
             // TSMIX
             // 
             this.TSMIX.Name = "TSMIX";
-            this.TSMIX.Size = new System.Drawing.Size(152, 22);
+            this.TSMIX.Size = new System.Drawing.Size(113, 22);
             this.TSMIX.Text = "X";
             this.TSMIX.Click += new System.EventHandler(this.TSMIX_Click);
             // 
@@ -420,6 +421,13 @@
             this.TSMIRules.Size = new System.Drawing.Size(50, 20);
             this.TSMIRules.Text = "Rules";
             this.TSMIRules.Click += new System.EventHandler(this.TSMIRules_Click);
+            // 
+            // TSMIRank
+            // 
+            this.TSMIRank.Name = "TSMIRank";
+            this.TSMIRank.Size = new System.Drawing.Size(48, 20);
+            this.TSMIRank.Text = "Rank";
+            this.TSMIRank.Click += new System.EventHandler(this.TSMIRank_Click);
             // 
             // TSMIAbout
             // 
@@ -447,8 +455,8 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -496,6 +504,7 @@
         private System.Windows.Forms.ToolStripMenuItem TSMIMove;
         private System.Windows.Forms.ToolStripMenuItem TSMIX;
         private System.Windows.Forms.ToolStripMenuItem TSMIRules;
+        private System.Windows.Forms.ToolStripMenuItem TSMIRank;
     }
 }
 

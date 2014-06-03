@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 //畫GroupBox
 using System.Drawing.Drawing2D;
+//MySQL
+using MySql.Data.MySqlClient;
 
 namespace _2048_Game
 {
@@ -21,7 +23,7 @@ namespace _2048_Game
         }
         //全域變數
         int[,] Location_ex = new int[4, 4];
-        int PlayTime = 0, getPoint = 0;
+        int PlayTime = 0, GetScore = 0;
         bool Check, CheckTimeMode;
         int CheckMove = 0, CheckAdd = 0, CheckActive = 0, CheckRule;
         //全域變數
@@ -47,7 +49,7 @@ namespace _2048_Game
                 CheckStatus();
             }
         }
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyData.ToString())
             {
@@ -98,10 +100,11 @@ namespace _2048_Game
                     }
             }
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             //選擇模式
             TSMIClassic.PerformClick();
+            TSMIRules.PerformClick();
             //在隨機位置產生兩個隨機的數字
             FirstLoad();
             ReadScore(TSMIClassic.Text, 1);
@@ -123,7 +126,7 @@ namespace _2048_Game
                     }
                 }
             } while (FirstCheck == 2);
-            if(TSMIX.Checked==true)
+            if (TSMIX.Checked == true)
             {
                 //隨機產生一障礙物
                 NumChangeLocation();
@@ -159,7 +162,7 @@ namespace _2048_Game
                             Location_ex[i, j - 1] += Location_ex[i, j];
                             Location_ex[i, j] = 0;
                             CheckAdd++;
-                            getPoint += Location_ex[i, j - 1];
+                            GetScore += Location_ex[i, j - 1];
                         }
                     }
                 }
@@ -180,7 +183,7 @@ namespace _2048_Game
                             Location_ex[i, j + 1] += Location_ex[i, j];
                             Location_ex[i, j] = 0;
                             CheckAdd++;
-                            getPoint += Location_ex[i, j + 1];
+                            GetScore += Location_ex[i, j + 1];
                         }
                     }
                 }
@@ -201,7 +204,7 @@ namespace _2048_Game
                             Location_ex[i - 1, j] += Location_ex[i, j];
                             Location_ex[i, j] = 0;
                             CheckAdd++;
-                            getPoint += Location_ex[i - 1, j];
+                            GetScore += Location_ex[i - 1, j];
                         }
                     }
                 }
@@ -222,7 +225,7 @@ namespace _2048_Game
                             Location_ex[i + 1, j] += Location_ex[i, j];
                             Location_ex[i, j] = 0;
                             CheckAdd++;
-                            getPoint += Location_ex[i + 1, j];
+                            GetScore += Location_ex[i + 1, j];
                         }
                     }
                 }
@@ -427,10 +430,11 @@ namespace _2048_Game
                 obj.Text = "0";
             }
             NumChangeLocation();
-            getPoint = 0;
+            GetScore = 0;
             PlayTime = 0;
+            timer1.Enabled = true;
             CheckTimeMode = false;
-            lblPoint.Text = "Score：" + getPoint;
+            lblPoint.Text = "Score：" + GetScore;
             if (statusStrip1.Items.Count > 2)
             {
                 statusStrip1.Items.RemoveAt(2);
@@ -607,7 +611,7 @@ namespace _2048_Game
                     MessageBox.Show("恭喜達到2048！");
                 }
             }
-            lblPoint.Text = "Score：" + getPoint;
+            lblPoint.Text = "Score：" + GetScore;
             //若數字無移動與數字無相加就不進行動作
             if (CheckMove != 0 || CheckAdd != 0)
             {
@@ -639,6 +643,7 @@ namespace _2048_Game
             }
             if (CheckActive == 0)
             {
+                timer1.Enabled = false;
                 MessageBox.Show("Game Over");
                 if (TSMIClassic.Checked == true)
                 {
@@ -662,9 +667,10 @@ namespace _2048_Game
             CheckMove = 0;
             CheckAdd = 0;
         }
-        //檢查是否突破最高分數，若有則寫入紀錄檔
+        //檢查是否突破最高分數，若有則寫入紀錄檔&上傳資料庫
         public void WriteScore(string SaveName, int SaveLine)
         {
+            //寫入檔案
             try
             {
                 StreamReader Read = new StreamReader(@"./Config.Dat", Encoding.UTF8);
@@ -672,18 +678,14 @@ namespace _2048_Game
                 Read.Close();
                 if (str.IndexOf(SaveName) >= 0)
                 {
-                    if (getPoint > int.Parse(str.Split('：', '\n')[SaveLine]))
+                    if (GetScore > int.Parse(str.Split('：', '\n')[SaveLine]))
                     {
-                        str = str.Replace(SaveName + "：" + str.Split('：', '\n')[SaveLine], SaveName + "：" + getPoint.ToString());
+                        str = str.Replace(SaveName + "：" + str.Split('：', '\n')[SaveLine], SaveName + "：" + GetScore.ToString());
                         StreamWriter Write = new StreamWriter(@"./Config.Dat");
                         Write.Write(str);
                         Write.Close();
-                        lblBestScore.Text = "Best Score：" + getPoint;
-                        MessageBox.Show("恭喜突破最高紀錄！");
-                    }
-                    else
-                    {
-                        MessageBox.Show("差一點點突破，再加油！");
+                        lblBestScore.Text = "Best Score：" + GetScore;
+                        MessageBox.Show("恭喜突破自己最高紀錄！");
                     }
                 }
             }
@@ -692,7 +694,7 @@ namespace _2048_Game
                 StreamWriter Write = new StreamWriter(@"./Config.Dat");
                 if (SaveName == "Classic")
                 {
-                    Write.WriteLine("Classic：" + getPoint);
+                    Write.WriteLine("Classic：" + GetScore);
                     Write.WriteLine("Time：0");
                     Write.WriteLine("Move：0");
                     Write.WriteLine("X：0");
@@ -700,7 +702,7 @@ namespace _2048_Game
                 else if (SaveName == "Time")
                 {
                     Write.WriteLine("Classic：0");
-                    Write.WriteLine("Time：" + getPoint);
+                    Write.WriteLine("Time：" + GetScore);
                     Write.WriteLine("Move：0");
                     Write.WriteLine("X：0");
                 }
@@ -708,7 +710,7 @@ namespace _2048_Game
                 {
                     Write.WriteLine("Classic：0");
                     Write.WriteLine("Time：0");
-                    Write.WriteLine("Move：" + getPoint);
+                    Write.WriteLine("Move：" + GetScore);
                     Write.WriteLine("X：0");
                 }
                 else if (SaveName == "X")
@@ -716,11 +718,46 @@ namespace _2048_Game
                     Write.WriteLine("Classic：");
                     Write.WriteLine("Time：0");
                     Write.WriteLine("Move：0");
-                    Write.WriteLine("X：0" + getPoint);
+                    Write.WriteLine("X：0" + GetScore);
                 }
                 Write.Close();
-                lblBestScore.Text = "Best Score：" + getPoint;
+                lblBestScore.Text = "Best Score：" + GetScore;
             }
+            try
+            {
+                int i = 0;
+                //開始資料庫連結
+                string Server = "Server=shuang.myftp.org;Port=3306;Database=finalproject;User=test;Pwd=test;CharSet=utf8;";
+                //選擇資料庫
+                string Search = "SELECT * FROM 2048Rank utf8 ORDER BY Score DESC";
+                MySqlConnection sqlcon = new MySqlConnection(Server);
+                sqlcon.Open();
+                MySqlCommand cmd = new MySqlCommand(Search, sqlcon);
+                MySqlDataReader myDataReader = cmd.ExecuteReader();
+                while (myDataReader.Read())
+                {
+                    if (int.Parse(myDataReader["Score"].ToString()) > GetScore && myDataReader["Mode"].ToString() == SaveName)
+                    {
+                        i++;
+                    }
+                }
+                sqlcon.Close();
+                if (i < 11 && GetScore > 0)
+                {
+                    //上傳資料庫
+                    Update ShowPost = new Update(GetScore, SaveName, PlayTime);
+                    ShowPost.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("未突破其他人記錄");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         //尋找最佳成績，若無則新增一紀錄檔
         public void ReadScore(string ReadName, int ReadLine)
@@ -862,7 +899,22 @@ namespace _2048_Game
 
         private void TSMIRules_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("每次控制所有方塊向同一個方向運動\n兩個相同數字的方塊撞在一起之後合並成為他們的和\n每次操作之後會在空白的方格處隨機生成一個2或者4\n最終得到一個'2048'的方塊就算勝利！\n\n Classic：如果格子填滿且無法相加或移動時結算。\n\n Time：如果數字成功相加秒數會加一上限十秒，剩下秒數為零時結算。\n\n Move：如果數字成功相加步數會加一上限五步，剩下步數為零時結算。\n\n X：隨機產生一格障礙物，且會隨著數字移動，如果格子填滿且無法相加或移動時結算。", "遊戲說明");
+            string msg;
+            msg = "每次控制所有方塊向同一個方向運動\n";
+            msg += "兩個相同數字的方塊撞在一起之後合並成為他們的和\n";
+            msg += "每次操作之後會在空白的方格處隨機生成一個2或者4\n";
+            msg += "最終得到一個'2048'的方塊就算勝利！\n\n";
+            msg += "Classic：如果格子填滿且無法相加或移動時結算。\n";
+            msg += "Time：如果數字成功相加秒數會加一上限十秒，剩下秒數為零時結算。\n";
+            msg += "Move：如果數字成功相加步數會加一上限五步，剩下步數為零時結算。\n";
+            msg += "X：隨機產生一格障礙物，且會隨著數字移動，如果格子填滿且無法相加或移動時結算。";
+            MessageBox.Show(msg, "遊戲說明");
+        }
+
+        private void TSMIRank_Click(object sender, EventArgs e)
+        {
+            Rank ShowRank = new Rank();
+            ShowRank.ShowDialog();
         }
     }
 }
