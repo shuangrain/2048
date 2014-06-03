@@ -64,7 +64,6 @@ namespace _2048_Game
                 }
             }
             sqlcon.Close();
-
         }
     }
 }
