@@ -31,22 +31,22 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.d4 = new System.Windows.Forms.Button();
-            this.d3 = new System.Windows.Forms.Button();
-            this.d2 = new System.Windows.Forms.Button();
-            this.d1 = new System.Windows.Forms.Button();
-            this.c4 = new System.Windows.Forms.Button();
-            this.c3 = new System.Windows.Forms.Button();
-            this.c2 = new System.Windows.Forms.Button();
-            this.c1 = new System.Windows.Forms.Button();
-            this.b4 = new System.Windows.Forms.Button();
-            this.b3 = new System.Windows.Forms.Button();
-            this.b2 = new System.Windows.Forms.Button();
-            this.b1 = new System.Windows.Forms.Button();
-            this.a4 = new System.Windows.Forms.Button();
-            this.a3 = new System.Windows.Forms.Button();
-            this.a2 = new System.Windows.Forms.Button();
-            this.a1 = new System.Windows.Forms.Button();
+            this.x0y0 = new System.Windows.Forms.Button();
+            this.x0y1 = new System.Windows.Forms.Button();
+            this.x0y2 = new System.Windows.Forms.Button();
+            this.x0y3 = new System.Windows.Forms.Button();
+            this.x1y0 = new System.Windows.Forms.Button();
+            this.x1y1 = new System.Windows.Forms.Button();
+            this.x1y2 = new System.Windows.Forms.Button();
+            this.x1y3 = new System.Windows.Forms.Button();
+            this.x2y0 = new System.Windows.Forms.Button();
+            this.x2y1 = new System.Windows.Forms.Button();
+            this.x2y2 = new System.Windows.Forms.Button();
+            this.x2y3 = new System.Windows.Forms.Button();
+            this.x3y0 = new System.Windows.Forms.Button();
+            this.x3y1 = new System.Windows.Forms.Button();
+            this.x3y2 = new System.Windows.Forms.Button();
+            this.x3y3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblBestScore = new System.Windows.Forms.Label();
             this.lblPoint = new System.Windows.Forms.Label();
@@ -72,22 +72,22 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.d4);
-            this.groupBox2.Controls.Add(this.d3);
-            this.groupBox2.Controls.Add(this.d2);
-            this.groupBox2.Controls.Add(this.d1);
-            this.groupBox2.Controls.Add(this.c4);
-            this.groupBox2.Controls.Add(this.c3);
-            this.groupBox2.Controls.Add(this.c2);
-            this.groupBox2.Controls.Add(this.c1);
-            this.groupBox2.Controls.Add(this.b4);
-            this.groupBox2.Controls.Add(this.b3);
-            this.groupBox2.Controls.Add(this.b2);
-            this.groupBox2.Controls.Add(this.b1);
-            this.groupBox2.Controls.Add(this.a4);
-            this.groupBox2.Controls.Add(this.a3);
-            this.groupBox2.Controls.Add(this.a2);
-            this.groupBox2.Controls.Add(this.a1);
+            this.groupBox2.Controls.Add(this.x0y0);
+            this.groupBox2.Controls.Add(this.x0y1);
+            this.groupBox2.Controls.Add(this.x0y2);
+            this.groupBox2.Controls.Add(this.x0y3);
+            this.groupBox2.Controls.Add(this.x1y0);
+            this.groupBox2.Controls.Add(this.x1y1);
+            this.groupBox2.Controls.Add(this.x1y2);
+            this.groupBox2.Controls.Add(this.x1y3);
+            this.groupBox2.Controls.Add(this.x2y0);
+            this.groupBox2.Controls.Add(this.x2y1);
+            this.groupBox2.Controls.Add(this.x2y2);
+            this.groupBox2.Controls.Add(this.x2y3);
+            this.groupBox2.Controls.Add(this.x3y0);
+            this.groupBox2.Controls.Add(this.x3y1);
+            this.groupBox2.Controls.Add(this.x3y2);
+            this.groupBox2.Controls.Add(this.x3y3);
             this.groupBox2.Location = new System.Drawing.Point(6, 120);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(390, 414);
@@ -95,197 +95,197 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox2_Paint);
             // 
-            // d4
+            // x0y0
             // 
-            this.d4.AutoEllipsis = true;
-            this.d4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.d4.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.d4.Location = new System.Drawing.Point(294, 309);
-            this.d4.Name = "d4";
-            this.d4.Size = new System.Drawing.Size(90, 90);
-            this.d4.TabIndex = 15;
-            this.d4.TabStop = false;
-            this.d4.UseVisualStyleBackColor = true;
+            this.x0y0.AutoEllipsis = true;
+            this.x0y0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x0y0.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x0y0.Location = new System.Drawing.Point(6, 309);
+            this.x0y0.Name = "x0y0";
+            this.x0y0.Size = new System.Drawing.Size(90, 90);
+            this.x0y0.TabIndex = 0;
+            this.x0y0.TabStop = false;
+            this.x0y0.UseVisualStyleBackColor = true;
             // 
-            // d3
+            // x0y1
             // 
-            this.d3.AutoEllipsis = true;
-            this.d3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.d3.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.d3.Location = new System.Drawing.Point(294, 213);
-            this.d3.Name = "d3";
-            this.d3.Size = new System.Drawing.Size(90, 90);
-            this.d3.TabIndex = 14;
-            this.d3.TabStop = false;
-            this.d3.UseVisualStyleBackColor = true;
+            this.x0y1.AutoEllipsis = true;
+            this.x0y1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x0y1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x0y1.Location = new System.Drawing.Point(6, 213);
+            this.x0y1.Name = "x0y1";
+            this.x0y1.Size = new System.Drawing.Size(90, 90);
+            this.x0y1.TabIndex = 4;
+            this.x0y1.TabStop = false;
+            this.x0y1.UseVisualStyleBackColor = true;
             // 
-            // d2
+            // x0y2
             // 
-            this.d2.AutoEllipsis = true;
-            this.d2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.d2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.d2.Location = new System.Drawing.Point(294, 117);
-            this.d2.Name = "d2";
-            this.d2.Size = new System.Drawing.Size(90, 90);
-            this.d2.TabIndex = 13;
-            this.d2.TabStop = false;
-            this.d2.UseVisualStyleBackColor = true;
+            this.x0y2.AutoEllipsis = true;
+            this.x0y2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x0y2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x0y2.Location = new System.Drawing.Point(6, 117);
+            this.x0y2.Name = "x0y2";
+            this.x0y2.Size = new System.Drawing.Size(90, 90);
+            this.x0y2.TabIndex = 8;
+            this.x0y2.TabStop = false;
+            this.x0y2.UseVisualStyleBackColor = true;
             // 
-            // d1
+            // x0y3
             // 
-            this.d1.AutoEllipsis = true;
-            this.d1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.d1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.d1.Location = new System.Drawing.Point(294, 21);
-            this.d1.Name = "d1";
-            this.d1.Size = new System.Drawing.Size(90, 90);
-            this.d1.TabIndex = 12;
-            this.d1.TabStop = false;
-            this.d1.UseVisualStyleBackColor = true;
+            this.x0y3.AutoEllipsis = true;
+            this.x0y3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x0y3.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x0y3.Location = new System.Drawing.Point(6, 21);
+            this.x0y3.Name = "x0y3";
+            this.x0y3.Size = new System.Drawing.Size(90, 90);
+            this.x0y3.TabIndex = 12;
+            this.x0y3.TabStop = false;
+            this.x0y3.UseVisualStyleBackColor = true;
             // 
-            // c4
+            // x1y0
             // 
-            this.c4.AutoEllipsis = true;
-            this.c4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c4.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.c4.Location = new System.Drawing.Point(198, 309);
-            this.c4.Name = "c4";
-            this.c4.Size = new System.Drawing.Size(90, 90);
-            this.c4.TabIndex = 11;
-            this.c4.TabStop = false;
-            this.c4.UseVisualStyleBackColor = true;
+            this.x1y0.AutoEllipsis = true;
+            this.x1y0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x1y0.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x1y0.Location = new System.Drawing.Point(102, 309);
+            this.x1y0.Name = "x1y0";
+            this.x1y0.Size = new System.Drawing.Size(90, 90);
+            this.x1y0.TabIndex = 1;
+            this.x1y0.TabStop = false;
+            this.x1y0.UseVisualStyleBackColor = true;
             // 
-            // c3
+            // x1y1
             // 
-            this.c3.AutoEllipsis = true;
-            this.c3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c3.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.c3.Location = new System.Drawing.Point(198, 213);
-            this.c3.Name = "c3";
-            this.c3.Size = new System.Drawing.Size(90, 90);
-            this.c3.TabIndex = 10;
-            this.c3.TabStop = false;
-            this.c3.UseVisualStyleBackColor = true;
+            this.x1y1.AutoEllipsis = true;
+            this.x1y1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x1y1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x1y1.Location = new System.Drawing.Point(102, 213);
+            this.x1y1.Name = "x1y1";
+            this.x1y1.Size = new System.Drawing.Size(90, 90);
+            this.x1y1.TabIndex = 5;
+            this.x1y1.TabStop = false;
+            this.x1y1.UseVisualStyleBackColor = true;
             // 
-            // c2
+            // x1y2
             // 
-            this.c2.AutoEllipsis = true;
-            this.c2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.c2.Location = new System.Drawing.Point(198, 117);
-            this.c2.Name = "c2";
-            this.c2.Size = new System.Drawing.Size(90, 90);
-            this.c2.TabIndex = 9;
-            this.c2.TabStop = false;
-            this.c2.UseVisualStyleBackColor = true;
+            this.x1y2.AutoEllipsis = true;
+            this.x1y2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x1y2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x1y2.Location = new System.Drawing.Point(102, 117);
+            this.x1y2.Name = "x1y2";
+            this.x1y2.Size = new System.Drawing.Size(90, 90);
+            this.x1y2.TabIndex = 9;
+            this.x1y2.TabStop = false;
+            this.x1y2.UseVisualStyleBackColor = true;
             // 
-            // c1
+            // x1y3
             // 
-            this.c1.AutoEllipsis = true;
-            this.c1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.c1.Location = new System.Drawing.Point(198, 21);
-            this.c1.Name = "c1";
-            this.c1.Size = new System.Drawing.Size(90, 90);
-            this.c1.TabIndex = 8;
-            this.c1.TabStop = false;
-            this.c1.UseVisualStyleBackColor = true;
+            this.x1y3.AutoEllipsis = true;
+            this.x1y3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x1y3.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x1y3.Location = new System.Drawing.Point(102, 21);
+            this.x1y3.Name = "x1y3";
+            this.x1y3.Size = new System.Drawing.Size(90, 90);
+            this.x1y3.TabIndex = 13;
+            this.x1y3.TabStop = false;
+            this.x1y3.UseVisualStyleBackColor = true;
             // 
-            // b4
+            // x2y0
             // 
-            this.b4.AutoEllipsis = true;
-            this.b4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.b4.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.b4.Location = new System.Drawing.Point(102, 309);
-            this.b4.Name = "b4";
-            this.b4.Size = new System.Drawing.Size(90, 90);
-            this.b4.TabIndex = 7;
-            this.b4.TabStop = false;
-            this.b4.UseVisualStyleBackColor = true;
+            this.x2y0.AutoEllipsis = true;
+            this.x2y0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x2y0.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x2y0.Location = new System.Drawing.Point(198, 309);
+            this.x2y0.Name = "x2y0";
+            this.x2y0.Size = new System.Drawing.Size(90, 90);
+            this.x2y0.TabIndex = 2;
+            this.x2y0.TabStop = false;
+            this.x2y0.UseVisualStyleBackColor = true;
             // 
-            // b3
+            // x2y1
             // 
-            this.b3.AutoEllipsis = true;
-            this.b3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.b3.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.b3.Location = new System.Drawing.Point(102, 213);
-            this.b3.Name = "b3";
-            this.b3.Size = new System.Drawing.Size(90, 90);
-            this.b3.TabIndex = 6;
-            this.b3.TabStop = false;
-            this.b3.UseVisualStyleBackColor = true;
+            this.x2y1.AutoEllipsis = true;
+            this.x2y1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x2y1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x2y1.Location = new System.Drawing.Point(198, 213);
+            this.x2y1.Name = "x2y1";
+            this.x2y1.Size = new System.Drawing.Size(90, 90);
+            this.x2y1.TabIndex = 6;
+            this.x2y1.TabStop = false;
+            this.x2y1.UseVisualStyleBackColor = true;
             // 
-            // b2
+            // x2y2
             // 
-            this.b2.AutoEllipsis = true;
-            this.b2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.b2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.b2.Location = new System.Drawing.Point(102, 117);
-            this.b2.Name = "b2";
-            this.b2.Size = new System.Drawing.Size(90, 90);
-            this.b2.TabIndex = 5;
-            this.b2.TabStop = false;
-            this.b2.UseVisualStyleBackColor = true;
+            this.x2y2.AutoEllipsis = true;
+            this.x2y2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x2y2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x2y2.Location = new System.Drawing.Point(198, 117);
+            this.x2y2.Name = "x2y2";
+            this.x2y2.Size = new System.Drawing.Size(90, 90);
+            this.x2y2.TabIndex = 10;
+            this.x2y2.TabStop = false;
+            this.x2y2.UseVisualStyleBackColor = true;
             // 
-            // b1
+            // x2y3
             // 
-            this.b1.AutoEllipsis = true;
-            this.b1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.b1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.b1.Location = new System.Drawing.Point(102, 21);
-            this.b1.Name = "b1";
-            this.b1.Size = new System.Drawing.Size(90, 90);
-            this.b1.TabIndex = 4;
-            this.b1.TabStop = false;
-            this.b1.UseVisualStyleBackColor = true;
+            this.x2y3.AutoEllipsis = true;
+            this.x2y3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x2y3.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x2y3.Location = new System.Drawing.Point(198, 21);
+            this.x2y3.Name = "x2y3";
+            this.x2y3.Size = new System.Drawing.Size(90, 90);
+            this.x2y3.TabIndex = 14;
+            this.x2y3.TabStop = false;
+            this.x2y3.UseVisualStyleBackColor = true;
             // 
-            // a4
+            // x3y0
             // 
-            this.a4.AutoEllipsis = true;
-            this.a4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a4.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.a4.Location = new System.Drawing.Point(6, 309);
-            this.a4.Name = "a4";
-            this.a4.Size = new System.Drawing.Size(90, 90);
-            this.a4.TabIndex = 3;
-            this.a4.TabStop = false;
-            this.a4.UseVisualStyleBackColor = true;
+            this.x3y0.AutoEllipsis = true;
+            this.x3y0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x3y0.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x3y0.Location = new System.Drawing.Point(294, 309);
+            this.x3y0.Name = "x3y0";
+            this.x3y0.Size = new System.Drawing.Size(90, 90);
+            this.x3y0.TabIndex = 3;
+            this.x3y0.TabStop = false;
+            this.x3y0.UseVisualStyleBackColor = true;
             // 
-            // a3
+            // x3y1
             // 
-            this.a3.AutoEllipsis = true;
-            this.a3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a3.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.a3.Location = new System.Drawing.Point(6, 213);
-            this.a3.Name = "a3";
-            this.a3.Size = new System.Drawing.Size(90, 90);
-            this.a3.TabIndex = 2;
-            this.a3.TabStop = false;
-            this.a3.UseVisualStyleBackColor = true;
+            this.x3y1.AutoEllipsis = true;
+            this.x3y1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x3y1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x3y1.Location = new System.Drawing.Point(294, 213);
+            this.x3y1.Name = "x3y1";
+            this.x3y1.Size = new System.Drawing.Size(90, 90);
+            this.x3y1.TabIndex = 7;
+            this.x3y1.TabStop = false;
+            this.x3y1.UseVisualStyleBackColor = true;
             // 
-            // a2
+            // x3y2
             // 
-            this.a2.AutoEllipsis = true;
-            this.a2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.a2.Location = new System.Drawing.Point(6, 117);
-            this.a2.Name = "a2";
-            this.a2.Size = new System.Drawing.Size(90, 90);
-            this.a2.TabIndex = 1;
-            this.a2.TabStop = false;
-            this.a2.UseVisualStyleBackColor = true;
+            this.x3y2.AutoEllipsis = true;
+            this.x3y2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x3y2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x3y2.Location = new System.Drawing.Point(294, 117);
+            this.x3y2.Name = "x3y2";
+            this.x3y2.Size = new System.Drawing.Size(90, 90);
+            this.x3y2.TabIndex = 11;
+            this.x3y2.TabStop = false;
+            this.x3y2.UseVisualStyleBackColor = true;
             // 
-            // a1
+            // x3y3
             // 
-            this.a1.AutoEllipsis = true;
-            this.a1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.a1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.a1.Location = new System.Drawing.Point(6, 21);
-            this.a1.Name = "a1";
-            this.a1.Size = new System.Drawing.Size(90, 90);
-            this.a1.TabIndex = 0;
-            this.a1.TabStop = false;
-            this.a1.UseVisualStyleBackColor = true;
+            this.x3y3.AutoEllipsis = true;
+            this.x3y3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.x3y3.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.x3y3.Location = new System.Drawing.Point(294, 21);
+            this.x3y3.Name = "x3y3";
+            this.x3y3.Size = new System.Drawing.Size(90, 90);
+            this.x3y3.TabIndex = 15;
+            this.x3y3.TabStop = false;
+            this.x3y3.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -472,26 +472,26 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button a1;
+        private System.Windows.Forms.Button x0y3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tSSLTime;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button d4;
-        private System.Windows.Forms.Button d3;
-        private System.Windows.Forms.Button d2;
-        private System.Windows.Forms.Button d1;
-        private System.Windows.Forms.Button c4;
-        private System.Windows.Forms.Button c3;
-        private System.Windows.Forms.Button c2;
-        private System.Windows.Forms.Button c1;
-        private System.Windows.Forms.Button b4;
-        private System.Windows.Forms.Button b3;
-        private System.Windows.Forms.Button b2;
-        private System.Windows.Forms.Button b1;
-        private System.Windows.Forms.Button a4;
-        private System.Windows.Forms.Button a3;
-        private System.Windows.Forms.Button a2;
+        private System.Windows.Forms.Button x0y0;
+        private System.Windows.Forms.Button x0y1;
+        private System.Windows.Forms.Button x0y2;
+        private System.Windows.Forms.Button x1y0;
+        private System.Windows.Forms.Button x1y1;
+        private System.Windows.Forms.Button x1y2;
+        private System.Windows.Forms.Button x1y3;
+        private System.Windows.Forms.Button x2y0;
+        private System.Windows.Forms.Button x2y1;
+        private System.Windows.Forms.Button x2y2;
+        private System.Windows.Forms.Button x2y3;
+        private System.Windows.Forms.Button x3y0;
+        private System.Windows.Forms.Button x3y1;
+        private System.Windows.Forms.Button x3y2;
+        private System.Windows.Forms.Button x3y3;
         private System.Windows.Forms.ToolStripStatusLabel tSSLPlayTime;
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.Label lblBestScore;

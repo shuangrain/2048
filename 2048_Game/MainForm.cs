@@ -22,17 +22,20 @@ namespace _2048_Game
             InitializeComponent();
         }
         //全域變數
-        int[,] Location_ex = new int[4, 4];
+        int[,] Coordinate = new int[4, 4];
         int PlayTime = 0, GetScore = 0;
         bool Check, CheckTimeMode;
-        int CheckMove = 0, CheckAdd = 0, CheckActive = 0, CheckRule;
+        int CheckMove = 0, CheckAdd = 0, CheckActive = 0, CheckRule = 0;
         //全域變數
         private void timer1_Tick(object sender, EventArgs e)
         {
             //若使用者焦點在方塊上則更改焦點
-            if (a1.Focused == true || a2.Focused == true || a3.Focused == true || a4.Focused == true || b1.Focused == true || b2.Focused == true || b3.Focused == true || b4.Focused == true || c1.Focused == true || c2.Focused == true || c3.Focused == true || c4.Focused == true || d1.Focused == true || d2.Focused == true || d3.Focused == true || d4.Focused == true)
+            foreach (Button obj in groupBox2.Controls)
             {
-                lblPoint.Focus();
+                if (obj.Focused == true)
+                {
+                    lblPoint.Focus();
+                }
             }
             PlayTime++;
             tSSLTime.Text = DateTime.Now.ToString();
@@ -61,9 +64,9 @@ namespace _2048_Game
                 case "Up":
                     {
                         NumChangeLocation();
-                        Move_Up();
-                        Add_Up();
-                        Move_Up();
+                        MoveNum(-1, 3, 0, 1);
+                        AddNum("Right+Up", -1, 3, 0, 1);
+                        MoveNum(-1, 3, 0, 1);
                         LocationChangeNum();
                         CheckStatus();
                         break;
@@ -71,9 +74,9 @@ namespace _2048_Game
                 case "Down":
                     {
                         NumChangeLocation();
-                        Move_Down();
-                        Add_Down();
-                        Move_Down();
+                        MoveNum(-1, 0, 0, -1);
+                        AddNum("Left+Down", -1, 0, 0, -1);
+                        MoveNum(-1, 0, 0, -1);
                         LocationChangeNum();
                         CheckStatus();
                         break;
@@ -81,9 +84,9 @@ namespace _2048_Game
                 case "Left":
                     {
                         NumChangeLocation();
-                        Move_Left();
-                        Add_Left();
-                        Move_Left();
+                        MoveNum(0, -1, -1, 0);
+                        AddNum("Left+Down", 0, -1, -1, 0);
+                        MoveNum(0, -1, -1, 0);
                         LocationChangeNum();
                         CheckStatus();
                         break;
@@ -91,9 +94,9 @@ namespace _2048_Game
                 case "Right":
                     {
                         NumChangeLocation();
-                        Move_Right();
-                        Add_Right();
-                        Move_Right();
+                        MoveNum(3, -1, 1, 0);
+                        AddNum("Right+Up", 3, -1, 1, 0);
+                        MoveNum(3, -1, 1, 0);
                         LocationChangeNum();
                         CheckStatus();
                         break;
@@ -137,103 +140,63 @@ namespace _2048_Game
                 {
                     x = obj.Next(0, 4);
                     y = obj.Next(0, 4);
-                    if (Location_ex[x, y] == 0)
+                    if (Coordinate[x, y] == 0)
                     {
                         Check = true;
-                        Location_ex[x, y] = 10;
+                        Coordinate[x, y] = 10;
                         LocationChangeNum();
                     }
                 } while (Check == false);
                 NumColor();
             }
         }
-        public void Add_Up()
+        public void AddNum(string Direction, int Limit_x1, int Limit_y1, int Limit_x2, int Limit_y2)
         {
-            //檢查數字是否可以加起來
-            for (int i = 0; i < 4; i++)
+            if (Direction == "Right+Up")
             {
-                for (int j = 0; j < 4; j++)
+                for (int i = 3; i > -1; i--)
                 {
-                    //檢查空白並防止溢位
-                    if (Location_ex[i, j] != 0 && j != 0)
+                    for (int j = 3; j > -1; j--)
                     {
-                        if (Location_ex[i, j - 1] == Location_ex[i, j])
+                        //檢查空白並防止溢位
+                        if (Coordinate[i, j] != 0 && i != Limit_x1 && j != Limit_y1)
                         {
-                            Location_ex[i, j - 1] += Location_ex[i, j];
-                            Location_ex[i, j] = 0;
-                            CheckAdd++;
-                            GetScore += Location_ex[i, j - 1];
+                            if (Coordinate[i + Limit_x2, j + Limit_y2] == Coordinate[i, j])
+                            {
+                                Coordinate[i + Limit_x2, j + Limit_y2] += Coordinate[i, j];
+                                GetScore += Coordinate[i + Limit_x2, j + Limit_y2];
+                                Coordinate[i, j] = 0;
+                                CheckAdd++;
+                            }
+                        }
+
+                    }
+                }
+            }
+            else if (Direction == "Left+Down")
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        //檢查空白並防止溢位
+                        if (Coordinate[i, j] != 0 && i != Limit_x1 && j != Limit_y1)
+                        {
+                            if (Coordinate[i + Limit_x2, j + Limit_y2] == Coordinate[i, j])
+                            {
+                                Coordinate[i + Limit_x2, j + Limit_y2] += Coordinate[i, j];
+                                GetScore += Coordinate[i + Limit_x2, j + Limit_y2];
+                                Coordinate[i, j] = 0;
+                                CheckAdd++;
+                            }
                         }
                     }
                 }
             }
         }
-        public void Add_Down()
+        public void MoveNum(int Limit_x1, int Limit_y1, int Limit_x2, int Limit_y2)
         {
-            //檢查數字是否可以加起來
-            for (int i = 3; i > -1; i--)
-            {
-                for (int j = 3; j > -1; j--)
-                {
-                    //檢查空白並防止溢位
-                    if (Location_ex[i, j] != 0 && j + 1 < 4)
-                    {
-                        if (Location_ex[i, j + 1] == Location_ex[i, j])
-                        {
-                            Location_ex[i, j + 1] += Location_ex[i, j];
-                            Location_ex[i, j] = 0;
-                            CheckAdd++;
-                            GetScore += Location_ex[i, j + 1];
-                        }
-                    }
-                }
-            }
-        }
-        public void Add_Left()
-        {
-            //檢查數字是否可以加起來
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    //檢查空白並防止溢位
-                    if (Location_ex[i, j] != 0 && i != 0)
-                    {
-                        if (Location_ex[i - 1, j] == Location_ex[i, j])
-                        {
-                            Location_ex[i - 1, j] += Location_ex[i, j];
-                            Location_ex[i, j] = 0;
-                            CheckAdd++;
-                            GetScore += Location_ex[i - 1, j];
-                        }
-                    }
-                }
-            }
-        }
-        public void Add_Right()
-        {
-            //檢查數字是否可以加起來
-            for (int i = 3; i > -1; i--)
-            {
-                for (int j = 3; j > -1; j--)
-                {
-                    //檢查空白並防止溢位
-                    if (Location_ex[i, j] != 0 && i + 1 < 4)
-                    {
-                        if (Location_ex[i + 1, j] == Location_ex[i, j])
-                        {
-                            Location_ex[i + 1, j] += Location_ex[i, j];
-                            Location_ex[i, j] = 0;
-                            CheckAdd++;
-                            GetScore += Location_ex[i + 1, j];
-                        }
-                    }
-                }
-            }
-        }
-        public void Move_Up()
-        {
-            //移動數字
+            //執行次數
             for (int run = 0; run < 3; run++)
             {
                 for (int i = 0; i < 4; i++)
@@ -241,12 +204,12 @@ namespace _2048_Game
                     for (int j = 0; j < 4; j++)
                     {
                         //檢查空白並防止溢位
-                        if (Location_ex[i, j] != 0 && j != 0)
+                        if (Coordinate[i, j] != 0 && i != Limit_x1 && j != Limit_y1)
                         {
-                            if (Location_ex[i, j - 1] == 0)
+                            if (Coordinate[i + Limit_x2, j + Limit_y2] == 0)
                             {
-                                Location_ex[i, j - 1] = Location_ex[i, j];
-                                Location_ex[i, j] = 0;
+                                Coordinate[i + Limit_x2, j + Limit_y2] = Coordinate[i, j];
+                                Coordinate[i, j] = 0;
                                 CheckMove++;
                             }
                         }
@@ -254,74 +217,23 @@ namespace _2048_Game
                 }
             }
         }
-        public void Move_Down()
+        public void CheckNum(int Limit_x1, int Limit_y1, int Limit_x2, int Limit_y2)
         {
-            //移動數字
-            for (int run = 0; run < 3; run++)
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 3; i > -1; i--)
+                for (int j = 0; j < 4; j++)
                 {
-                    for (int j = 3; j > -1; j--)
+                    //檢查空白並防止溢位
+                    if (Coordinate[i, j] != 0 && i != Limit_x1 && j != Limit_y1)
                     {
-                        //檢查空白並防止溢位
-                        if (Location_ex[i, j] != 0 && j + 1 < 4)
+                        if (Coordinate[i + Limit_x2, j + Limit_y2] == 0 || Coordinate[i + Limit_x2, j + Limit_y2] == Coordinate[i, j])
                         {
-                            if (Location_ex[i, j + 1] == 0)
-                            {
-                                Location_ex[i, j + 1] = Location_ex[i, j];
-                                Location_ex[i, j] = 0;
-                                CheckMove++;
-                            }
+                            CheckActive++;
                         }
                     }
                 }
             }
-        }
-        public void Move_Left()
-        {
-            //移動數字
-            for (int run = 0; run < 3; run++)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        //檢查空白並防止溢位
-                        if (Location_ex[i, j] != 0 && i != 0)
-                        {
-                            if (Location_ex[i - 1, j] == 0)
-                            {
-                                Location_ex[i - 1, j] = Location_ex[i, j];
-                                Location_ex[i, j] = 0;
-                                CheckMove++;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        public void Move_Right()
-        {
-            //移動數字
-            for (int run = 0; run < 3; run++)
-            {
-                for (int i = 3; i > -1; i--)
-                {
-                    for (int j = 3; j > -1; j--)
-                    {
-                        //檢查空白並防止溢位
-                        if (Location_ex[i, j] != 0 && i + 1 < 4)
-                        {
-                            if (Location_ex[i + 1, j] == 0)
-                            {
-                                Location_ex[i + 1, j] = Location_ex[i, j];
-                                Location_ex[i, j] = 0;
-                                CheckMove++;
-                            }
-                        }
-                    }
-                }
-            }
+
         }
         //數字轉換用
         public void NumChangeLocation()
@@ -335,22 +247,22 @@ namespace _2048_Game
                 }
             }
             //變數
-            Location_ex[0, 0] = int.Parse(a1.Text);
-            Location_ex[0, 1] = int.Parse(a2.Text);
-            Location_ex[0, 2] = int.Parse(a3.Text);
-            Location_ex[0, 3] = int.Parse(a4.Text);
-            Location_ex[1, 0] = int.Parse(b1.Text);
-            Location_ex[1, 1] = int.Parse(b2.Text);
-            Location_ex[1, 2] = int.Parse(b3.Text);
-            Location_ex[1, 3] = int.Parse(b4.Text);
-            Location_ex[2, 0] = int.Parse(c1.Text);
-            Location_ex[2, 1] = int.Parse(c2.Text);
-            Location_ex[2, 2] = int.Parse(c3.Text);
-            Location_ex[2, 3] = int.Parse(c4.Text);
-            Location_ex[3, 0] = int.Parse(d1.Text);
-            Location_ex[3, 1] = int.Parse(d2.Text);
-            Location_ex[3, 2] = int.Parse(d3.Text);
-            Location_ex[3, 3] = int.Parse(d4.Text);
+            Coordinate[0, 0] = int.Parse(x0y0.Text);
+            Coordinate[0, 1] = int.Parse(x0y1.Text);
+            Coordinate[0, 2] = int.Parse(x0y2.Text);
+            Coordinate[0, 3] = int.Parse(x0y3.Text);
+            Coordinate[1, 0] = int.Parse(x1y0.Text);
+            Coordinate[1, 1] = int.Parse(x1y1.Text);
+            Coordinate[1, 2] = int.Parse(x1y2.Text);
+            Coordinate[1, 3] = int.Parse(x1y3.Text);
+            Coordinate[2, 0] = int.Parse(x2y0.Text);
+            Coordinate[2, 1] = int.Parse(x2y1.Text);
+            Coordinate[2, 2] = int.Parse(x2y2.Text);
+            Coordinate[2, 3] = int.Parse(x2y3.Text);
+            Coordinate[3, 0] = int.Parse(x3y0.Text);
+            Coordinate[3, 1] = int.Parse(x3y1.Text);
+            Coordinate[3, 2] = int.Parse(x3y2.Text);
+            Coordinate[3, 3] = int.Parse(x3y3.Text);
             //把零的文字轉成空白，供使用者觀看
             foreach (Button obj in groupBox2.Controls)
             {
@@ -363,22 +275,22 @@ namespace _2048_Game
         //數字轉換用
         public void LocationChangeNum()
         {
-            a1.Text = Location_ex[0, 0].ToString();
-            a2.Text = Location_ex[0, 1].ToString();
-            a3.Text = Location_ex[0, 2].ToString();
-            a4.Text = Location_ex[0, 3].ToString();
-            b1.Text = Location_ex[1, 0].ToString();
-            b2.Text = Location_ex[1, 1].ToString();
-            b3.Text = Location_ex[1, 2].ToString();
-            b4.Text = Location_ex[1, 3].ToString();
-            c1.Text = Location_ex[2, 0].ToString();
-            c2.Text = Location_ex[2, 1].ToString();
-            c3.Text = Location_ex[2, 2].ToString();
-            c4.Text = Location_ex[2, 3].ToString();
-            d1.Text = Location_ex[3, 0].ToString();
-            d2.Text = Location_ex[3, 1].ToString();
-            d3.Text = Location_ex[3, 2].ToString();
-            d4.Text = Location_ex[3, 3].ToString();
+            x0y0.Text = Coordinate[0, 0].ToString();
+            x0y1.Text = Coordinate[0, 1].ToString();
+            x0y2.Text = Coordinate[0, 2].ToString();
+            x0y3.Text = Coordinate[0, 3].ToString();
+            x1y0.Text = Coordinate[1, 0].ToString();
+            x1y1.Text = Coordinate[1, 1].ToString();
+            x1y2.Text = Coordinate[1, 2].ToString();
+            x1y3.Text = Coordinate[1, 3].ToString();
+            x2y0.Text = Coordinate[2, 0].ToString();
+            x2y1.Text = Coordinate[2, 1].ToString();
+            x2y2.Text = Coordinate[2, 2].ToString();
+            x2y3.Text = Coordinate[2, 3].ToString();
+            x3y0.Text = Coordinate[3, 0].ToString();
+            x3y1.Text = Coordinate[3, 1].ToString();
+            x3y2.Text = Coordinate[3, 2].ToString();
+            x3y3.Text = Coordinate[3, 3].ToString();
             //把零的文字轉成空白，供使用者觀看
             foreach (Button obj in groupBox2.Controls)
             {
@@ -412,10 +324,10 @@ namespace _2048_Game
                 {
                     x = obj.Next(0, 4);
                     y = obj.Next(0, 4);
-                    if (Location_ex[x, y] == 0)
+                    if (Coordinate[x, y] == 0)
                     {
                         Check = true;
-                        Location_ex[x, y] = temp;
+                        Coordinate[x, y] = temp;
                         LocationChangeNum();
                     }
                 } while (Check == false);
@@ -459,7 +371,6 @@ namespace _2048_Game
         private void groupBox1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(groupBox1.BackColor);
-
             Rectangle Rtg_LT = new Rectangle();
             Rectangle Rtg_RT = new Rectangle();
             Rectangle Rtg_LB = new Rectangle();
@@ -468,12 +379,10 @@ namespace _2048_Game
             Rtg_RT.X = e.ClipRectangle.Width - 11; Rtg_RT.Y = 7; Rtg_RT.Width = 10; Rtg_RT.Height = 10;
             Rtg_LB.X = 0; Rtg_LB.Y = e.ClipRectangle.Height - 11; Rtg_LB.Width = 10; Rtg_LB.Height = 10;
             Rtg_RB.X = e.ClipRectangle.Width - 11; Rtg_RB.Y = e.ClipRectangle.Height - 11; Rtg_RB.Width = 10; Rtg_RB.Height = 10;
-
             Color color = Color.FromArgb(51, 94, 168);
             Pen Pen_AL = new Pen(color, 1);
             Pen_AL.Color = color;
             Brush brush = new HatchBrush(HatchStyle.Divot, color);
-
             e.Graphics.DrawString(groupBox1.Text, groupBox1.Font, brush, 6, 0);
             e.Graphics.DrawArc(Pen_AL, Rtg_LT, 180, 90);
             e.Graphics.DrawArc(Pen_AL, Rtg_RT, 270, 90);
@@ -489,7 +398,6 @@ namespace _2048_Game
         private void groupBox2_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(groupBox2.BackColor);
-
             Rectangle Rtg_LT = new Rectangle();
             Rectangle Rtg_RT = new Rectangle();
             Rectangle Rtg_LB = new Rectangle();
@@ -498,12 +406,10 @@ namespace _2048_Game
             Rtg_RT.X = e.ClipRectangle.Width - 11; Rtg_RT.Y = 7; Rtg_RT.Width = 10; Rtg_RT.Height = 10;
             Rtg_LB.X = 0; Rtg_LB.Y = e.ClipRectangle.Height - 11; Rtg_LB.Width = 10; Rtg_LB.Height = 10;
             Rtg_RB.X = e.ClipRectangle.Width - 11; Rtg_RB.Y = e.ClipRectangle.Height - 11; Rtg_RB.Width = 10; Rtg_RB.Height = 10;
-
             Color color = Color.FromArgb(51, 94, 168);
             Pen Pen_AL = new Pen(color, 1);
             Pen_AL.Color = color;
             Brush brush = new HatchBrush(HatchStyle.Divot, color);
-
             e.Graphics.DrawString(groupBox2.Text, groupBox2.Font, brush, 6, 0);
             e.Graphics.DrawArc(Pen_AL, Rtg_LT, 180, 90);
             e.Graphics.DrawArc(Pen_AL, Rtg_RT, 270, 90);
@@ -518,84 +424,12 @@ namespace _2048_Game
         //檢查目前遊戲狀態
         public void CheckStatus()
         {
-            CheckActive = 0;
             ////檢查上下左右是否有可以移動或加起來的數字////
-            //上
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    //檢查空白並防止溢位
-                    if (Location_ex[i, j] != 0 && j != 0)
-                    {
-                        if (Location_ex[i, j - 1] == 0)
-                        {
-                            CheckActive++;
-                        }
-                        if (Location_ex[i, j - 1] == Location_ex[i, j])
-                        {
-                            CheckActive++;
-                        }
-                    }
-                }
-            }
-            //下
-            for (int i = 3; i > -1; i--)
-            {
-                for (int j = 3; j > -1; j--)
-                {
-                    //檢查空白並防止溢位
-                    if (Location_ex[i, j] != 0 && j + 1 < 4)
-                    {
-                        if (Location_ex[i, j + 1] == 0)
-                        {
-                            CheckActive++;
-                        }
-                        if (Location_ex[i, j + 1] == Location_ex[i, j])
-                        {
-                            CheckActive++;
-                        }
-                    }
-                }
-            }
-            //左
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    //檢查空白並防止溢位
-                    if (Location_ex[i, j] != 0 && i != 0)
-                    {
-                        if (Location_ex[i - 1, j] == 0)
-                        {
-                            CheckActive++;
-                        }
-                        if (Location_ex[i - 1, j] == Location_ex[i, j])
-                        {
-                            CheckActive++;
-                        }
-                    }
-                }
-            }
-            //右
-            for (int i = 3; i > -1; i--)
-            {
-                for (int j = 3; j > -1; j--)
-                {
-                    //檢查空白並防止溢位
-                    if (Location_ex[i, j] != 0 && i + 1 < 4)
-                    {
-                        if (Location_ex[i + 1, j] == 0)
-                        {
-                            CheckActive++;
-                        }
-                        if (Location_ex[i + 1, j] == Location_ex[i, j])
-                        {
-                            CheckActive++;
-                        }
-                    }
-                }
-            }
+            CheckActive = 0;
+            CheckNum(-1, 3, 0, 1);
+            CheckNum(-1, 0, 0, -1);
+            CheckNum(0, -1, -1, 0);
+            CheckNum(3, -1, 1, 0);
             //Time模式時間到時
             if (CheckTimeMode == false && TSMITime.Checked == true)
             {
@@ -641,6 +475,7 @@ namespace _2048_Game
                 }
                 Rand();
             }
+            //遊戲結束 寫入成績
             if (CheckActive == 0)
             {
                 timer1.Enabled = false;
@@ -753,9 +588,9 @@ namespace _2048_Game
                     MessageBox.Show("未突破其他人記錄");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("伺服器連結發生問題！");
             }
 
         }

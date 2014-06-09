@@ -57,8 +57,7 @@ namespace _2048_Game
             }
             catch (Exception)
             {
-                MessageBox.Show("Error");
-                this.Close();
+                MessageBox.Show("伺服器連結發生問題！");
             }
         }
         private void btnClose_Click(object sender, EventArgs e)
