@@ -362,10 +362,6 @@ namespace _2048_Game
                 CheckRule = 3;
                 statusStrip1.Items.Add("可動：" + CheckRule + " 步");
             }
-            else if (TSMIX.Checked == true)
-            {
-
-            }
         }
         //重新繪製groupBox
         private void groupBox1_Paint(object sender, PaintEventArgs e)
@@ -592,7 +588,6 @@ namespace _2048_Game
             {
                 MessageBox.Show("伺服器連結發生問題！");
             }
-
         }
         //尋找最佳成績，若無則新增一紀錄檔
         public void ReadScore(string ReadName, int ReadLine)
@@ -680,7 +675,6 @@ namespace _2048_Game
                 }
             }
         }
-
         private void TSMIClassic_Click(object sender, EventArgs e)
         {
             TSMIClassic.Checked = true;
@@ -692,7 +686,6 @@ namespace _2048_Game
             ReadScore(TSMIClassic.Text, 1);
             this.Text = "2048  [Classic]";
         }
-
         private void TSMITime_Click(object sender, EventArgs e)
         {
             TSMIClassic.Checked = false;
@@ -704,7 +697,6 @@ namespace _2048_Game
             ReadScore(TSMITime.Text, 3);
             this.Text = "2048  [Time]";
         }
-
         private void TSMIMove_Click(object sender, EventArgs e)
         {
             TSMIClassic.Checked = false;
@@ -731,7 +723,6 @@ namespace _2048_Game
         {
             MessageBox.Show("By.shuangrain", "視窗程式設計期末專題報告");
         }
-
         private void TSMIRules_Click(object sender, EventArgs e)
         {
             string msg;
