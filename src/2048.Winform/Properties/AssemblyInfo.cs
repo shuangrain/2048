@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("2048.Winform")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("https://github.com/shuangrain/2048")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("2048.Winform")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("lex.xu (https://github.com/shuangrain/2048)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
