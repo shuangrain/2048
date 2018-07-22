@@ -1,4 +1,4 @@
-﻿namespace _2048_Game
+﻿namespace _2048.Winform
 {
     partial class MainForm
     {
@@ -50,24 +50,24 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblBestScore = new System.Windows.Forms.Label();
             this.lblPoint = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tSSLTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSSLPlayTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.TSMIReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.TSMI_Reset = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIMode = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIClassic = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMITime = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIMove = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIX = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIRules = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIRank = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_ClassicMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Time = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Move = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_BlockMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Rules = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Rank = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_About = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -318,18 +318,18 @@
             this.lblPoint.TabIndex = 0;
             this.lblPoint.Text = "Score：0 ";
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tSSLTime,
             this.tSSLPlayTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 541);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(401, 22);
-            this.statusStrip1.SizingGrip = false;
-            this.statusStrip1.TabIndex = 6;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip.Location = new System.Drawing.Point(0, 541);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(401, 22);
+            this.statusStrip.SizingGrip = false;
+            this.statusStrip.TabIndex = 6;
+            this.statusStrip.Text = "statusStrip";
             // 
             // tSSLTime
             // 
@@ -345,96 +345,96 @@
             this.tSSLPlayTime.Spring = true;
             this.tSSLPlayTime.Text = "tSSLPlayTime";
             // 
-            // timer1
+            // timer
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer.Enabled = true;
+            this.timer.Interval = 500;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMIReset,
+            this.menuStrip.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMI_Reset,
             this.TSMIMode,
-            this.TSMIRules,
-            this.TSMIRank,
-            this.TSMIAbout});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(401, 24);
-            this.menuStrip1.TabIndex = 7;
-            this.menuStrip1.Text = "menuStrip1";
+            this.TSMI_Rules,
+            this.TSMI_Rank,
+            this.TSMI_About});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(401, 24);
+            this.menuStrip.TabIndex = 7;
+            this.menuStrip.Text = "menuStrip";
             // 
-            // TSMIReset
+            // TSMI_Reset
             // 
-            this.TSMIReset.Name = "TSMIReset";
-            this.TSMIReset.Size = new System.Drawing.Size(83, 20);
-            this.TSMIReset.Text = "New Game";
-            this.TSMIReset.Click += new System.EventHandler(this.TSMIReset_Click);
+            this.TSMI_Reset.Name = "TSMI_Reset";
+            this.TSMI_Reset.Size = new System.Drawing.Size(82, 20);
+            this.TSMI_Reset.Text = "New Game";
+            this.TSMI_Reset.Click += new System.EventHandler(this.TSMI_Reset_Click);
             // 
             // TSMIMode
             // 
             this.TSMIMode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMIClassic,
-            this.TSMITime,
-            this.TSMIMove,
-            this.TSMIX});
+            this.TSMI_ClassicMode,
+            this.TSMI_Time,
+            this.TSMI_Move,
+            this.TSMI_BlockMode});
             this.TSMIMode.Name = "TSMIMode";
-            this.TSMIMode.Size = new System.Drawing.Size(55, 20);
+            this.TSMIMode.Size = new System.Drawing.Size(54, 20);
             this.TSMIMode.Text = "Mode";
             // 
-            // TSMIClassic
+            // TSMI_ClassicMode
             // 
-            this.TSMIClassic.CheckOnClick = true;
-            this.TSMIClassic.Name = "TSMIClassic";
-            this.TSMIClassic.Size = new System.Drawing.Size(113, 22);
-            this.TSMIClassic.Text = "Classic";
-            this.TSMIClassic.Click += new System.EventHandler(this.TSMIClassic_Click);
+            this.TSMI_ClassicMode.CheckOnClick = true;
+            this.TSMI_ClassicMode.Name = "TSMI_ClassicMode";
+            this.TSMI_ClassicMode.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_ClassicMode.Text = "Classic";
+            this.TSMI_ClassicMode.Click += new System.EventHandler(this.TSMI_ClassicMode_Click);
             // 
-            // TSMITime
+            // TSMI_Time
             // 
-            this.TSMITime.CheckOnClick = true;
-            this.TSMITime.Name = "TSMITime";
-            this.TSMITime.Size = new System.Drawing.Size(113, 22);
-            this.TSMITime.Text = "Time";
-            this.TSMITime.Click += new System.EventHandler(this.TSMITime_Click);
+            this.TSMI_Time.CheckOnClick = true;
+            this.TSMI_Time.Name = "TSMI_Time";
+            this.TSMI_Time.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_Time.Text = "Time";
+            this.TSMI_Time.Click += new System.EventHandler(this.TSMI_Time_Click);
             // 
-            // TSMIMove
+            // TSMI_Move
             // 
-            this.TSMIMove.CheckOnClick = true;
-            this.TSMIMove.Name = "TSMIMove";
-            this.TSMIMove.Size = new System.Drawing.Size(113, 22);
-            this.TSMIMove.Text = "Move";
-            this.TSMIMove.Click += new System.EventHandler(this.TSMIMove_Click);
+            this.TSMI_Move.CheckOnClick = true;
+            this.TSMI_Move.Name = "TSMI_Move";
+            this.TSMI_Move.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_Move.Text = "Move";
+            this.TSMI_Move.Click += new System.EventHandler(this.TSMI_Move_Click);
             // 
-            // TSMIX
+            // TSMI_BlockMode
             // 
-            this.TSMIX.Name = "TSMIX";
-            this.TSMIX.Size = new System.Drawing.Size(113, 22);
-            this.TSMIX.Text = "X";
-            this.TSMIX.Click += new System.EventHandler(this.TSMIX_Click);
+            this.TSMI_BlockMode.Name = "TSMI_BlockMode";
+            this.TSMI_BlockMode.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_BlockMode.Text = "Block";
+            this.TSMI_BlockMode.Click += new System.EventHandler(this.TSMI_BlockMode_Click);
             // 
-            // TSMIRules
+            // TSMI_Rules
             // 
-            this.TSMIRules.Name = "TSMIRules";
-            this.TSMIRules.Size = new System.Drawing.Size(50, 20);
-            this.TSMIRules.Text = "Rules";
-            this.TSMIRules.Click += new System.EventHandler(this.TSMIRules_Click);
+            this.TSMI_Rules.Name = "TSMI_Rules";
+            this.TSMI_Rules.Size = new System.Drawing.Size(49, 20);
+            this.TSMI_Rules.Text = "Rules";
+            this.TSMI_Rules.Click += new System.EventHandler(this.TSMI_Rules_Click);
             // 
-            // TSMIRank
+            // TSMI_Rank
             // 
-            this.TSMIRank.Name = "TSMIRank";
-            this.TSMIRank.Size = new System.Drawing.Size(48, 20);
-            this.TSMIRank.Text = "Rank";
-            this.TSMIRank.Click += new System.EventHandler(this.TSMIRank_Click);
+            this.TSMI_Rank.Name = "TSMI_Rank";
+            this.TSMI_Rank.Size = new System.Drawing.Size(47, 20);
+            this.TSMI_Rank.Text = "Rank";
+            this.TSMI_Rank.Click += new System.EventHandler(this.TSMI_Rank_Click);
             // 
-            // TSMIAbout
+            // TSMI_About
             // 
-            this.TSMIAbout.Name = "TSMIAbout";
-            this.TSMIAbout.Size = new System.Drawing.Size(55, 20);
-            this.TSMIAbout.Text = "About";
-            this.TSMIAbout.Click += new System.EventHandler(this.TSMIAbout_Click);
+            this.TSMI_About.Name = "TSMI_About";
+            this.TSMI_About.Size = new System.Drawing.Size(54, 20);
+            this.TSMI_About.Text = "About";
+            this.TSMI_About.Click += new System.EventHandler(this.TSMI_About_Click);
             // 
             // MainForm
             // 
@@ -442,14 +442,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(401, 563);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
@@ -460,10 +460,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,9 +474,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button x0y3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel tSSLTime;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Button x0y0;
         private System.Windows.Forms.Button x0y1;
         private System.Windows.Forms.Button x0y2;
@@ -495,16 +495,16 @@
         private System.Windows.Forms.ToolStripStatusLabel tSSLPlayTime;
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.Label lblBestScore;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem TSMIReset;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Reset;
         private System.Windows.Forms.ToolStripMenuItem TSMIMode;
-        private System.Windows.Forms.ToolStripMenuItem TSMIAbout;
-        private System.Windows.Forms.ToolStripMenuItem TSMIClassic;
-        private System.Windows.Forms.ToolStripMenuItem TSMITime;
-        private System.Windows.Forms.ToolStripMenuItem TSMIMove;
-        private System.Windows.Forms.ToolStripMenuItem TSMIX;
-        private System.Windows.Forms.ToolStripMenuItem TSMIRules;
-        private System.Windows.Forms.ToolStripMenuItem TSMIRank;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_About;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_ClassicMode;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Time;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Move;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_BlockMode;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Rules;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Rank;
     }
 }
 

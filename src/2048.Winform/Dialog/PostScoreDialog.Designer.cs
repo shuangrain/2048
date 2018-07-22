@@ -1,6 +1,6 @@
-﻿namespace _2048_Game
+﻿namespace _2048.Winform
 {
-    partial class Update
+    partial class PostScoreDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostScoreDialog));
             this.btnSend = new System.Windows.Forms.Button();
             this.textName = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -82,7 +83,7 @@
             this.lblName.TabIndex = 5;
             this.lblName.Text = "名稱：";
             // 
-            // Update
+            // PostScoreDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,12 +95,13 @@
             this.Controls.Add(this.textName);
             this.Controls.Add(this.btnSend);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Update";
+            this.Name = "PostScoreDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "更新排行榜";
-            this.Load += new System.EventHandler(this.Post_Load);
+            this.Text = "刷新排行榜";
+            this.Load += new System.EventHandler(this.PostScoreDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,6 +1,6 @@
-﻿namespace _2048_Game
+﻿namespace _2048.Winform.Dialog
 {
-    partial class Rank
+    partial class RankDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RankDialog));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabClassic = new System.Windows.Forms.TabPage();
             this.listClassic = new System.Windows.Forms.ListView();
@@ -47,8 +48,8 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabX = new System.Windows.Forms.TabPage();
-            this.listX = new System.Windows.Forms.ListView();
+            this.tabBlock = new System.Windows.Forms.TabPage();
+            this.listBlock = new System.Windows.Forms.ListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,7 +58,7 @@
             this.tabClassic.SuspendLayout();
             this.tabTime.SuspendLayout();
             this.tabMove.SuspendLayout();
-            this.tabX.SuspendLayout();
+            this.tabBlock.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -65,7 +66,7 @@
             this.tabControl1.Controls.Add(this.tabClassic);
             this.tabControl1.Controls.Add(this.tabTime);
             this.tabControl1.Controls.Add(this.tabMove);
-            this.tabControl1.Controls.Add(this.tabX);
+            this.tabControl1.Controls.Add(this.tabBlock);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -209,32 +210,32 @@
             this.columnHeader8.Text = "更新時間";
             this.columnHeader8.Width = 81;
             // 
-            // tabX
+            // tabBlock
             // 
-            this.tabX.Controls.Add(this.listX);
-            this.tabX.Location = new System.Drawing.Point(4, 29);
-            this.tabX.Name = "tabX";
-            this.tabX.Padding = new System.Windows.Forms.Padding(3);
-            this.tabX.Size = new System.Drawing.Size(376, 329);
-            this.tabX.TabIndex = 3;
-            this.tabX.Text = "X";
-            this.tabX.UseVisualStyleBackColor = true;
+            this.tabBlock.Controls.Add(this.listBlock);
+            this.tabBlock.Location = new System.Drawing.Point(4, 29);
+            this.tabBlock.Name = "tabBlock";
+            this.tabBlock.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBlock.Size = new System.Drawing.Size(376, 329);
+            this.tabBlock.TabIndex = 3;
+            this.tabBlock.Text = "Block";
+            this.tabBlock.UseVisualStyleBackColor = true;
             // 
-            // listX
+            // listBlock
             // 
-            this.listX.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listBlock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader9,
             this.columnHeader10,
             this.columnHeader11,
             this.columnHeader12});
-            this.listX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listX.Font = new System.Drawing.Font("微軟正黑體", 10F);
-            this.listX.Location = new System.Drawing.Point(3, 3);
-            this.listX.Name = "listX";
-            this.listX.Size = new System.Drawing.Size(370, 323);
-            this.listX.TabIndex = 1;
-            this.listX.UseCompatibleStateImageBehavior = false;
-            this.listX.View = System.Windows.Forms.View.Details;
+            this.listBlock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBlock.Font = new System.Drawing.Font("微軟正黑體", 10F);
+            this.listBlock.Location = new System.Drawing.Point(3, 3);
+            this.listBlock.Name = "listBlock";
+            this.listBlock.Size = new System.Drawing.Size(370, 323);
+            this.listBlock.TabIndex = 1;
+            this.listBlock.UseCompatibleStateImageBehavior = false;
+            this.listBlock.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader9
             // 
@@ -254,7 +255,7 @@
             this.columnHeader12.Text = "更新時間";
             this.columnHeader12.Width = 81;
             // 
-            // Rank
+            // RankDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -262,17 +263,18 @@
             this.ClientSize = new System.Drawing.Size(384, 362);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Rank";
+            this.Name = "RankDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Rank";
-            this.Load += new System.EventHandler(this.Rank_Load);
+            this.Load += new System.EventHandler(this.RankDialog_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabClassic.ResumeLayout(false);
             this.tabTime.ResumeLayout(false);
             this.tabMove.ResumeLayout(false);
-            this.tabX.ResumeLayout(false);
+            this.tabBlock.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -298,8 +300,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.TabPage tabX;
-        private System.Windows.Forms.ListView listX;
+        private System.Windows.Forms.TabPage tabBlock;
+        private System.Windows.Forms.ListView listBlock;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
